@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # Local
     'pages.apps.PagesConfig',
+    'account.apps.AccountConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
