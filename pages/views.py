@@ -11,3 +11,6 @@ class AboutPageView(TemplateView):
 
 class FaqPageView(TemplateView):
     template_name = 'faq.html'
+
+class GenrePageView(TemplateView):
+    template_name = 'genre.html'

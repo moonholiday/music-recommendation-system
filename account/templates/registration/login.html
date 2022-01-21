@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
+<h2>login</h2>
+{% if form.errors %}
+<p>Your username and password didn't match</p>
+{% else %}
+<p>Fill the form</p>
+{% endif %}
+<form action="{% url 'login' %}" method="post">
+  {{ form.as_p }} {% csrf_token %}
+  <input type="hidden" name="next" value="{{ next }}" />
+  <p><input type="submit" value="Log-in" /></p>
+</form>
+
+{% endblock %}

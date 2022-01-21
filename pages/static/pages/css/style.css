@@ -23,12 +23,12 @@ nav {
 }
 nav ul {
   float: right;
-  margin-right: 20px;
+  margin-right: 5px;
 }
 nav ul li {
   display: inline-block;
   line-height: 50px;
-  margin: 0 5px;
+  margin: 0 0px;
 }
 nav ul li a {
   color: #fff;
@@ -114,7 +114,7 @@ nav a {
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 969px) {
   .checkbtn {
     display: block;
   }
@@ -139,6 +139,6 @@ nav a {
     left: 0;
   }
   nav input[type="text"] {
-    margin-left: 20%;
+    display: none;
   }
 }
