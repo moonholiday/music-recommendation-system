@@ -1,0 +1,25 @@
+{% load static %}
+<nav>
+  <input type="checkbox" id="check" />
+  <label for="check" class="checkbtn">
+    <i class="fas fa-bars"></i>
+  </label>
+  <a href="{% url 'home' %}"
+    ><img
+      class="logo"
+      src="{% static 'pages/images/logo.png' %}"
+      alt="cloud-forum"
+      width="60"
+  /></a>
+  <input type="text" placeholder="" />
+  <ul>
+    <li><a href="{% url 'faq' %}">FAQs</a></li>
+    <li><a href="{% url 'about' %}">About Us</a></li>
+    <li>
+      <a aria-label="login" href="">Log In</a>
+    </li>
+    <li>
+      <a aria-label="signup" href="">Sign Up</a>
+    </li>
+  </ul>
+</nav>
