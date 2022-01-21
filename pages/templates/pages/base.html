@@ -1,0 +1,27 @@
+<script
+  src="https://kit.fontawesome.com/351e8914ed.js"
+  crossorigin="anonymous"
+></script>
+<nav>
+  <input type="checkbox" id="check" />
+  <label for="check" class="checkbtn">
+    <i class="fas fa-bars"></i>
+  </label>
+  <a href="{% url 'home' %}"
+    ><img class="logo" src="images/logo.png" alt="cloud-forum" width="60"
+  /></a>
+  <input type="text" placeholder="" />
+  <ul>
+    <li><a href="#">FAQs</a></li>
+    <li><a href="{% url 'about' %}">About Us</a></li>
+    <li><a href="#"> Contact</a></li>
+    <li>
+      <a aria-label="login" href="login.html">Log In</a>
+    </li>
+    <li>
+      <a aria-label="signup" href="signup.html">Sign Up</a>
+    </li>
+  </ul>
+</nav>
+
+{% block content %} {% endblock content %}
