@@ -4,6 +4,11 @@
   text-decoration: none;
   list-style: none;
 }
+
+html {
+    position: relative;
+    min-height: 100%;
+}
 a {
   text-decoration: none;
   color: white;
@@ -15,6 +20,7 @@ a:hover {
 
 body {
   background-color: #ddd;
+  height: 100%;
 }
 
 nav {
@@ -73,13 +79,13 @@ nav a {
 /* main section */
 
 .container {
-  height: 50em;
+  height: 100%;
 }
 
 .footer {
   padding: 40px 0;
   background-color: #101827;
-  position: relative;
+  margin-top: 10px;
 }
 
 .footer ul {

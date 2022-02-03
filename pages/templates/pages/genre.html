@@ -1,42 +1,24 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-  crossorigin="anonymous"
-/>
-<link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
-<link rel="stylesheet" href="{% static 'pages/css/genre.css' %}" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<script
-  src="https://kit.fontawesome.com/351e8914ed.js"
-  crossorigin="anonymous"
-></script>
+{% extends 'base.html' %} {% block content %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'pages/css/genre.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script
+      src="https://kit.fontawesome.com/351e8914ed.js"
+      crossorigin="anonymous"
+    ></script>
 
-<h2 class="heading">Explore Genres</h2>
+    <h2 class="heading">Explore Genres</h2>
+    <body>
+        <div class="rows">
+            <div class="column">
+                {% for x in dataset %}
+                {{ x.name }}
+                {% endfor %}
 
-<section class="genre-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <img src="{% static 'pages/images/genre1.png' %}" alt="" />
-      </div>
-      <div class="col-sm">
-        <img src="{% static 'pages/images/genre1.png' %}" alt="" />
-      </div>
-      <div class="col-sm">
-        <img src="{% static 'pages/images/genre1.png' %}" alt="" />
-      </div>
-      <div class="col-sm">
-        <img src="{% static 'pages/images/genre1.png' %}" alt="" />
-      </div>
-      <div class="col-sm">
-        <img src="{% static 'pages/images/genre1.png' %}" alt="" />
-      </div>
-      <div class="col-sm">
-        <img src="{% static 'pages/images/genre1.png' %}" alt="" />
-      </div>
-    </div>
-  </div>
-</section>
+          </div>
+        </div>
+    </body>
+</html>
 {% endblock content %}
