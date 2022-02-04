@@ -21,7 +21,7 @@
          <li {% if section == 'dashboard' %} class='selected'{% endif %}>
 
      {% endif %}
-     <span class="user">
+     <span class="user" style="color:white">
      {% if request.user.is_authenticated %}
      Hello {{ request.user.first_name }},
      <a href="{% url 'logout' %}">Logout</a>
