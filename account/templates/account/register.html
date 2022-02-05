@@ -1,25 +1,28 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 {% block content %}
-{% load crispy_forms_tags %}
 {% load static %}
+{% load crispy_forms_tags %}
+
 <link
   rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
   integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
   crossorigin="anonymous"
 />
-
 <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
- <div class="container" style="margin-top:3em">
+
+ <div class="container" style="margin-top:3em;">
+ 
      <div class="form-control">
-         <h3>Change your password</h3>
-         <form method="post" >
-             {{ form|crispy }}
+
+         <h1>Create an account</h1>
+         <p>Please, sign up using the following form:</p>
+         <form method="post">
+             {{ user_form|crispy }}
              {% csrf_token %}
-             <p><input class='btn btn-primary' type="submit" value="Change"></p>
+             <p><input class='btn btn-primary' type="submit" value="Create my account"></p>
          </form>
      </div>
  </div>
-{% endblock %}
 
+{% endblock %}
