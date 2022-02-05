@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
+{% load crispy_forms_tags %}
 <link
   rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -6,20 +7,19 @@
   crossorigin="anonymous"
 />
 <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
-<h2>login</h2>
-{% if form.errors %}
-    <p>Your username and password didn't match</p>
-{% else %}
-    <p>Fill the form</p>
-{% endif %}
-<div class="login-form">
-    <form action="{% url 'login' %}" method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}" />
-        <p><input type="submit" value="Log-in"></p>
-     </form>
-     <p><a href="{% url "password_reset" %}">Forgotten your password?</a></
-p>
+<div class="container">
+
+    <div class="form-control" style="margin-top:3em">
+        <h3>Oni Music</h3>
+<br>
+        <form action="{% url 'login' %}" method="post">
+            {{ form|crispy }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p><input type="submit" value="Log-in" class="btn btn-primary"></p>
+         </form>
+         <p><a href="{% url "password_reset" %}" style="color: black">Forgotten your password?</a></
+    p>
+    </div>
 </div>
 {% endblock %}
