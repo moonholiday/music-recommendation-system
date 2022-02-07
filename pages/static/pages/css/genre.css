@@ -9,13 +9,14 @@
 .rows {
     display: flex;
     flex-wrap: wrap;
-    padding: 0 4px;
+    padding:4px;
+    margin: 10px;
 }
 
 .column {
     flex: 25%;
     max-width: 25%;
-    padding: 0 4px;
+
 }
 
 .column img {
@@ -23,3 +24,12 @@
     vertical-align: middle;
     width: 100%;
 }
+
+
+@media screen and (max-width: 969px) {
+    .column {
+        max-width: 30%;
+    }
+}
+
+
