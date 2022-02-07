@@ -1,4 +1,4 @@
-# Oni Music
+# Oni Music 👹
 
 Oni music is a music recommendation system based on genre detection.
 
