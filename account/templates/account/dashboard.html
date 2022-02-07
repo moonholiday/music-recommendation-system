@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block content %} {% load static %}
 <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
-<h1>Dashboard</h1>
-<p>Welcome to your dashboard. You can <a href="{% url "edit" %}" style="color:black">edit your profile</a> or <a href="{% url "password_change" %}" style="color:black">change your password</a>.</p>
+<h1>User Profile Page</h1>
+<p>This is User Profile. You can <a href="{% url "edit" %}" style="color:black"><b>edit your profile</b></a> or <a href="{% url "password_change" %}" style="color:black"><b>change your password</b></a>.</p>
 {% endblock %}
