@@ -2,9 +2,18 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
+from .models import Editors
 
+# Creating views
 class HomePageView(TemplateView):
     template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["qs"] = Editors.objects.all()
+        return context
+
+
 
 class AboutPageView(TemplateView):
     template_name = 'about.html'

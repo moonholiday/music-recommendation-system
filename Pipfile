@@ -9,6 +9,7 @@ spotipy = "*"
 requests = "*"
 django-crispy-forms = "*"
 pillow = "*"
+mysqlclient = "*"
 
 [dev-packages]
 
