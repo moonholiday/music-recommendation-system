@@ -12,32 +12,44 @@
     <h1 class="heading"><b>Explore Genres</b></h1>
     <hr>
     <body>
+
         <div class="container">
+            <form action="">
+                <input type="hidden" id='hidden_token'>
+                <div class="col-sm-6 form-group row mt-4 px-0">
+                    <label for="Genre" class="form-label col-sm-2">Genre:</label>
+                    <select name="" id="select_genre" class="form-control form-control-sm col-sm-10">
+                        <option>Select...</option>
+                    </select>
+                </div>
+                <div class="col-sm-6 form-group row px-0">
+                    <label for="Genre" class="form-label col-sm-2">Playlists:</label>
+                    <select name="" id="select_playlist" class="form-control form-control-sm col-sm-10">
+                        <option>Select...</option>
+                    </select>
+                </div>
+                <div class="col-sm-6 row form-group px-0">
+                    <button type="submit" id="btn_submit" class="btn btn-success col-sm-12">Search</button>
+                </div>
+            </form>
             <div class="row">
-                <div class="column" >
+                <div class="col-sm-6 px-0">
+                    <div class="list-group song-list">
 
-                    <h3 class="genre-headers">Hip-Hop</h3>
-                     <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsuxWHRQd?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    </div>
                 </div>
-                <div class="column">
-
-                    <h3 class="genre-headers">EDM</h3>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4dyzvuaRJ0n?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-                </div>
-
-                <div class="column">
-
-                    <h3 class="genre-headers">Pop</h3>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; icture-in-picture"></iframe>
-                </div>
-                <div class="column">
-                    <h3 class="genre-headers">Rock</h3>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWXRqgorJj26U?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-                </div>
-
+                <div class="offset-md-1 col-sm-4" id="song-detail">
                 </div>
             </div>
         </div>
+        {%block scripts%}
+        <script src="{% static 'pages/scripts/app.js'%}"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        {%endblock scripts%}
+
     </body>
 </html>
 {% endblock content %}

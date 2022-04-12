@@ -1,32 +1,6 @@
-.heading {
-  text-align: center;
-  margin: 2em;
-  font-family: sans-serif;
-  font-size: 20px;
 
-}
-
-.rows {
-    display: flex;
-    flex-wrap: wrap;
-    padding:4px;
-    margin: 10px;
-}
-
-.column {
-    flex: 25%;
-    max-width: 25%;
-
-}
-
-.column img {
-    margin-top: 8px;
-    vertical-align: middle;
-    width: 100%;
-}
-
-.genre-headers {
-    text-align: center;
+#song-detail {
+  width: auto;
 }
 
 
@@ -35,5 +9,3 @@
         max-width: 30%;
     }
 }
-
-
