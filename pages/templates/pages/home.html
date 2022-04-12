@@ -19,10 +19,11 @@
   </head>
 
   <body>
-      <div>
-        <h1>Home page</h1>
-
-      </div>
+    <div class="hero"><p>Welcome to Oni Music</p></div>
+    <div class="flex-container">
+      <div><a style="background: black" href="{% url 'discover' %}">Find Recommendation</a></div>
+      <div><a style="background: black" href="{% url 'freemusic' %}">Free Music</a></div>
+    </div>
   </body>
 {%block scripts%}
 <script src="{% static 'pages/scripts/app.js'%}"></script>

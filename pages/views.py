@@ -3,7 +3,8 @@ from django.views.generic import TemplateView
 # import spotipy
 # from spotipy.oauth2 import SpotifyClientCredentials
 
-# Creating views
+# Creating views+
+
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
@@ -12,6 +13,12 @@ class AboutPageView(TemplateView):
 
 class FaqPageView(TemplateView):
     template_name = 'faq.html'
+
+class DiscoverPageView(TemplateView):
+    template_name = 'discover.html'
+
+class FreemusicPageView(TemplateView):
+    template_name = 'freemusic.html'
 
 class GenrePageView(TemplateView):
     template_name = 'genre.html'

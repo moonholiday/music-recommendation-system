@@ -7,7 +7,7 @@
 
 html {
     position: relative;
-    min-height: 100%;
+    height: 100%;
 }
 a {
   text-decoration: none;
@@ -41,15 +41,7 @@ nav ul li a {
   font-size: 15px;
 }
 
-nav input[type="text"] {
-  background-color: #ececec;
-  margin-left: 10em;
-  margin-right: 50px;
-  padding: 5px;
-  border: none;
-  font-size: 15px;
-  width: 25%;
-}
+
 
 /* Style the active/current link*/
 nav a {
@@ -110,6 +102,64 @@ nav a {
   margin-top: 40px;
   text-align: center;
   color: white;
+}
+
+.flex-container {
+  margin: 4em;
+  display: flex;
+  background: pink;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-container > div {
+  background-color: black;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.hero {
+  border: 5px solid #FFFF00;
+  font-size: 50px;
+  text-align: center;
+  margin: 2em;
+}
+
+.well {
+  background-color: #ffffee
+}
+
+#content {
+  padding: 25% 25% 5%;
+}
+
+.search-form {
+  border-radius: 30px 0 0 30px;
+}
+
+.input-group {
+  width:100%;
+}
+
+input-group-btn {
+  max-width:38px;
+}
+
+#search {
+  border: 1px;
+}
+
+.search-btn {
+  cursor:pointer;
+  border-radius: 0 30px 30px 0;
+  background-color:#fff;
+  color:#669;
+
+}
+
+.text-center {
+  color: #fff;
 }
 
 @media only screen and (max-width: 1250px) {
