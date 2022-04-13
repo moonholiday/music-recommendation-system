@@ -79,6 +79,7 @@ nav a {
 
 .container {
   height: 100%;
+  margin-top: 8em;
 }
 
 .footer {
@@ -119,7 +120,7 @@ nav a {
 }
 
 .flex-container > div {
-  margin: 10px;
+  margin: 20px;
   padding: 20px;
   font-size: 30px;
 }
@@ -134,7 +135,12 @@ nav a {
   font-weight: 600;
   font-style:normal;
 }
-
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
 
 .input-group {
   width:100%;

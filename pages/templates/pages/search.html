@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}{% load static %}
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script
+  src="https://kit.fontawesome.com/351e8914ed.js"
+  crossorigin="anonymous"
+></script>
+{% if result %}
+<div class='container'>
+  {% for x in result %}
+  <ol class='list-group mt-1'>
+    <li class="list-group-item"><h3>{{x.track}}</h3></li>
+  </ol>
+  {% endfor %}
+</div>
+{% endif%}
+{% endblock content %}

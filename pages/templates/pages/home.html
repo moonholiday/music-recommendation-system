@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script src="https://kit.fontawesome.com/351e8914ed.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/351e8914ed.js" crossorigin="anonymous"></script> -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -11,14 +11,13 @@
     />
     <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <meta charset="UTF-8" />
   </head>
   <body>
     <div class="hero"><p>Welcome to <span class="text-primary colored">Oni Music</span></p></div>
     <div class="flex-container">
-      <div><a href="{% url 'discover' %}">Find Recommendation</a></div>
-      <div><a href="{% url 'freemusic' %}">Royalty free music</a></div>
+      <div ><div class="icon"><i style="height: 60px" class="fa-solid fa-music"></i></div>Find Recommendation<div class="icon"><a class="btn btn-primary" href="{% url 'discover' %}">Try out</a></div></div>
+      <div><div class="icon"><i style="height: 60px" class="fa-solid fa-download"></i></div>Royalty free music<div class="icon"><a class="btn btn-primary" href="{% url 'freemusic' %}">Try out</a></div></div>
     </div>
   </body>
 {%block scripts%}
@@ -28,4 +27,3 @@
 </html>
 
 {% endblock content %}
-

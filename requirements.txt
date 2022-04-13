@@ -1,0 +1,6 @@
+fontawesomefree
+django==3.2
+pillow
+python-dotenv
+crispy_forms
+spotipy

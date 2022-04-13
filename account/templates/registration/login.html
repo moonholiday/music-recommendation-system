@@ -8,8 +8,8 @@
 />
 <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
 <div class="container">
-    <div class="form-control" style="margin-top:3em">
-        <h3>Oni Music</h3>
+    <div class="form-control">
+        <h3>Login to your account</h3>
 <br>
         <form action="{% url 'login' %}" method="post">
             {{ form|crispy }}
@@ -17,8 +17,8 @@
             <input type="hidden" name="next" value="{{ next }}" />
             <p><input type="submit" value="Log-in" class="btn btn-primary"></p>
          </form>
-         <p><a href="{% url "password_reset" %}" style="color: black">Forgotten your password?</a></
-    p>
+         <p><a href="{% url "password_reset" %}" style="color: black">Forgotten your password?</a></p>
+         <p><a href="{% url "register" %}" style="color: black">Dont have an account?</a></p>
     </div>
 </div>
 {% endblock %}

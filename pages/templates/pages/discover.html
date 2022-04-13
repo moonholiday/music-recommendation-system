@@ -14,17 +14,28 @@
 <div class="hero"><p>Discover page</p></div>
 <div class="flex-container">
     <div id="content">
-      <form class='form-inline'>
+      <form class='form-inline' method='post'>
+        {% csrf_token %}
         <div class="input-group">
-          <input type='text' id='search' class="form-control search-form" placeholder="Search..">
+          <input type='search' id='search' class="form-control search-form" placeholder="Search.." name="q">
           <span class="input-group-btn" >
-            <button id="search-this"type="button" class="pull-right btn btn-default search-btn">
+            <button id="search-this" type="submit" class="pull-right btn btn-default search-btn">
                 <i class="fa fa-search"></i>
             </button>
           </span>
         </div>
       </form>
   </div>
+
+
+  {% if result %}
+  <div class='container'>
+    {% for x in result %}
+    <li class="list-group-item">{{x}}</li>
+
+    {% endfor %}
+  </div>
+  {% endif%}
 </div>
 
 {% endblock content %}
