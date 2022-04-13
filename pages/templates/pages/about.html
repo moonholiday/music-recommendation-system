@@ -11,5 +11,30 @@
   src="https://kit.fontawesome.com/351e8914ed.js"
   crossorigin="anonymous"
 ></script>
-<h1>About page</h1>
+<div class="hero">
+  <p>About page</p>
+</div>
+<div class="flex-container">
+  <div  class="icon"><a  href="{% url 'home' %}"
+    ><img
+      class="logo"
+      src="{% static 'pages/images/logo.png' %}"
+      alt="cloud-forum"
+      width="120"
+  /></a></div>
+</div>
+<div class="flex-container">
+
+  <div><p>We hope you like oni music.com and we hope you'll be one of oni music supporters because it helps us out! 🙂
+Contributions go towards the servers and maintenance costs, as well as the continued development of oni music free online tools and free background music library.
+Thanks for considering supporting oni music!</p></div>
+
+
+
+</div>
+<div class="flex-container">
+  <div><p>How Does Oni Music Work?
+  Every day, millions of people around the world listen to different music. It s all about giving people what they need.</p>
+  </div>
+</div>
 {% endblock content %}

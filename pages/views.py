@@ -18,12 +18,12 @@ def discover(request):
     query = request.POST.get('q')
     if request.method=='POST':
         sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id="b4dad3bdf5144e6f8f408ec2f6f278a3", client_secret="a1e9ff23036a4444abcf6067fd63c2ca"))
-        result = sp.search(q=query, limit=10)
+        result = sp.search(q=query, limit=20)
         new = []
 
         for idx, track in enumerate(result['tracks']['items']):
             new += (idx, track['name'])
-            
+
         print(new)
         return render(request, 'discover.html', {'result': new})
     else:

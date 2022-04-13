@@ -48,8 +48,6 @@ nav ul li a {
   font-size: 15px;
 }
 
-
-
 /* Style the active/current link*/
 nav a {
   color: #fff;
@@ -78,8 +76,9 @@ nav a {
 /* main section */
 
 .container {
-  height: 100%;
-  margin-top: 8em;
+  margin-top: 2em;
+  margin-bottom: 4em;
+
 }
 
 .footer {
@@ -113,10 +112,11 @@ nav a {
 }
 
 .flex-container {
-  margin: 4em;
+  margin: 3em;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: -1;
 }
 
 .flex-container > div {
@@ -128,7 +128,7 @@ nav a {
 .hero {
   font-size: 50px;
   text-align: center;
-  margin: 2em;
+  margin: 1em;
 }
 
 .colored {
@@ -142,9 +142,6 @@ nav a {
   margin: 20px;
 }
 
-.input-group {
-  width:100%;
-}
 input-group-btn {
   max-width:100px;
 }
@@ -154,24 +151,21 @@ input-group-btn {
 }
 
 .search-btn {
-  height: 50px;
+  height: 36px;
   cursor:pointer;
   background-color:#fff;
   color:#669;
-
 }
-
 
 @media only screen and (max-width: 1250px) {
   nav a {
     margin: 10px;
   }
-  nav input[type="text"] {
-    margin-left: 4em;
-  }
+
 }
 
 @media screen and (max-width: 969px) {
+
   .checkbtn {
     display: block;
   }

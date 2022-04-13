@@ -11,31 +11,32 @@
   src="https://kit.fontawesome.com/351e8914ed.js"
   crossorigin="anonymous"
 ></script>
-<div class="hero"><p>Discover page</p></div>
-<div class="flex-container">
-    <div id="content">
-      <form class='form-inline' method='post'>
-        {% csrf_token %}
-        <div class="input-group">
-          <input type='search' id='search' class="form-control search-form" placeholder="Search.." name="q">
-          <span class="input-group-btn" >
-            <button id="search-this" type="submit" class="pull-right btn btn-default search-btn">
-                <i class="fa fa-search"></i>
-            </button>
-          </span>
-        </div>
-      </form>
+
+  <div class="hero"><p>Discover page</p></div>
+  <div class="flex-container">
+      <div id="content">
+        <form class='form-inline' method='post'>
+          {% csrf_token %}
+          <div >
+            <input type='search' id='search' class="form-control search-form" placeholder="Search.." name="q">
+            <span class="input-group-btn" >
+              <button id="search-this" type="submit" class="pull-right btn btn-default search-btn">
+                  <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+        </form>
+    </div>
   </div>
-
-
   {% if result %}
+
   <div class='container'>
+
     {% for x in result %}
-    <li class="list-group-item">{{x}}</li>
+    <li >{{x}}</li>
 
     {% endfor %}
   </div>
-  {% endif%}
-</div>
+{% endif%}
 
 {% endblock content %}
