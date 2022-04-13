@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://kit.fontawesome.com/351e8914ed.js" crossorigin="anonymous"></script>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -10,28 +11,21 @@
     />
     <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script
-      src="https://kit.fontawesome.com/351e8914ed.js"
-      crossorigin="anonymous"
-    ></script>
 
     <meta charset="UTF-8" />
   </head>
-
   <body>
-    <div class="hero"><p>Welcome to Oni Music</p></div>
+    <div class="hero"><p>Welcome to <span class="text-primary colored">Oni Music</span></p></div>
     <div class="flex-container">
-      <div><a style="background: black" href="{% url 'discover' %}">Find Recommendation</a></div>
-      <div><a style="background: black" href="{% url 'freemusic' %}">Free Music</a></div>
+      <div><a href="{% url 'discover' %}">Find Recommendation</a></div>
+      <div><a href="{% url 'freemusic' %}">Royalty free music</a></div>
     </div>
   </body>
 {%block scripts%}
 <script src="{% static 'pages/scripts/app.js'%}"></script>
 {%endblock scripts%}
 
-<!-- displaying the chart -->
-<!-- you can also play around with the width and height to increase or decrease the chart size -->
-<canvas id="myChart" width="400" height="100"></canvas>
 </html>
 
 {% endblock content %}
+
