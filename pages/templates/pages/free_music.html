@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block content %}{% load static %}
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script
+  src="https://kit.fontawesome.com/351e8914ed.js"
+  crossorigin="anonymous"
+></script>
+<div class="hero"><p>Free Music page</p></div>
+<div class="flex-container">
+  <div id="content">
+    <form class="form-inline" method="post">
+      {% csrf_token %}
+      <div>
+        <input
+          type="search"
+          id="search"
+          class="form-control search-form"
+          placeholder="Search.."
+          name="q"
+        />
+        <span class="input-group-btn">
+          <button
+            id="search-this"
+            type="submit"
+            class="pull-right btn btn-default search-btn"
+          >
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="flex-container">
+  <!-- Genre List -->
+  {% if genres %} {% for genre in genres %}
+  <div class="royalty">
+    <a href="{% url 'player' genre.id%}"
+      ><div class="icon">
+        <img
+          src="{{ genre.genre_img.url}}"
+          class="img-responsive"
+          width="200"
+        />
+      </div>
+
+      <p>{{genre.name}}</p>
+    </a>
+  </div>
+  {% endfor %} {% endif %}
+</div>
+
+{% endblock content %}

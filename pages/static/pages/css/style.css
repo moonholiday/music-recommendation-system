@@ -6,8 +6,8 @@
 }
 
 html {
-    position: relative;
-    height: 100%;
+  position: relative;
+  height: 100%;
 }
 
 a {
@@ -23,6 +23,7 @@ nav a {
 
 a:hover {
   color: gray;
+  text-decoration: none;
 }
 
 body {
@@ -78,7 +79,7 @@ nav a {
 .container {
   margin-top: 2em;
   margin-bottom: 4em;
-
+  max-width: 100%;
 }
 
 .footer {
@@ -112,17 +113,17 @@ nav a {
 }
 
 .flex-container {
-  margin: 3em;
+  margin: 2em;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: -1;
+  flex-wrap: wrap;
 }
 
 .flex-container > div {
-  margin: 20px;
-  padding: 20px;
-  font-size: 30px;
+  margin: 10px;
+  padding: 10px;
+  font-size: 20px;
 }
 
 .hero {
@@ -133,7 +134,7 @@ nav a {
 
 .colored {
   font-weight: 600;
-  font-style:normal;
+  font-style: normal;
 }
 .icon {
   display: flex;
@@ -143,7 +144,7 @@ nav a {
 }
 
 input-group-btn {
-  max-width:100px;
+  max-width: 100px;
 }
 
 #search {
@@ -152,20 +153,26 @@ input-group-btn {
 
 .search-btn {
   height: 36px;
-  cursor:pointer;
-  background-color:#fff;
-  color:#669;
+  cursor: pointer;
+  background-color: #fff;
+  color: #669;
+}
+
+.royalty {
+  text-align: center;
+}
+
+.royalty img:hover {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1250px) {
   nav a {
     margin: 10px;
   }
-
 }
 
 @media screen and (max-width: 969px) {
-
   .checkbtn {
     display: block;
   }

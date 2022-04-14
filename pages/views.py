@@ -4,6 +4,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 from django.http import HttpResponseRedirect
 import sys
+from .models import *
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
@@ -30,9 +31,23 @@ def discover(request):
         return render(request, 'discover.html')
 
 
+def free_music(request):
+    # display all genres
+    genres = Genre.objects.all()
 
-class FreemusicPageView(TemplateView):
-    template_name = 'freemusic.html'
+    context = {
+        'genres': genres
+    }
+    return render(request, 'free_music.html', context=context)
+
+def player(request, genre_id):
+    songs = Song.objects.all()
+    genres = Genre.objects.filter(id=genre_id).first()
+    context = {
+        'genres': genres,
+        'songs': songs,
+    }
+    return render(request, 'player.html', context=context)
 
 class GenrePageView(TemplateView):
     template_name = 'genre.html'

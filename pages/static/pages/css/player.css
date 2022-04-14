@@ -1,0 +1,14 @@
+.music img {
+  width: 150px;
+}
+.music {
+  width: 85%;
+  padding: 30px;
+  box-sizing: border-box;
+  background: pink;
+  display: flex;
+}
+
+.info {
+  margin-left: 20px;
+}

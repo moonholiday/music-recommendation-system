@@ -6,10 +6,25 @@
   crossorigin="anonymous"
 />
 <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'pages/css/player.css' %}" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script
   src="https://kit.fontawesome.com/351e8914ed.js"
   crossorigin="anonymous"
 ></script>
-<h1>Free music page</h1>
+<script src="https://unpkg.com/wavesurfer.js"></script>
+<div class="hero"><p>Music Player</p></div>
+<div class="flex-container">
+  {% if songs %} {% for song in songs %}
+  <div class="music">
+    <div class="info">
+      <h3>{{ song.name }}</h3>
+      <div id="waveform"></div>
+      <audio controls>
+        <source src="{{ song.song_file.url }}" type="audio/mpeg" />
+      </audio>
+    </div>
+  </div>
+  {% endfor %} {% endif %}
+</div>
 {% endblock content %}
