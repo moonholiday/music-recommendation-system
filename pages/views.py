@@ -15,6 +15,9 @@ class AboutPageView(TemplateView):
 class FaqPageView(TemplateView):
     template_name = 'faq.html'
 
+class GenrePageView(TemplateView):
+    template_name = 'genre.html'
+
 def discover(request):
     query = request.POST.get('q')
     if request.method=='POST':
@@ -29,7 +32,6 @@ def discover(request):
         return render(request, 'discover.html', {'result': new})
     else:
         return render(request, 'discover.html')
-
 
 def free_music(request):
     # display all genres
@@ -49,5 +51,12 @@ def player(request, genre_id):
     }
     return render(request, 'player.html', context=context)
 
-class GenrePageView(TemplateView):
-    template_name = 'genre.html'
+def CategoryView(request, gen):
+    category_songs = Song.objects.filter(genre=gen)
+    context = {
+        'gen': gen,
+        'category_songs': category_songs,
+    }
+
+
+    return render(request, 'categories.html', context=context)

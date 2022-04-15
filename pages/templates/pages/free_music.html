@@ -42,7 +42,7 @@
   <!-- Genre List -->
   {% if genres %} {% for genre in genres %}
   <div class="royalty">
-    <a href="{% url 'player' genre.id%}"
+    <a href="{% url 'songs' genre.id %}"
       ><div class="icon">
         <img
           src="{{ genre.genre_img.url}}"
