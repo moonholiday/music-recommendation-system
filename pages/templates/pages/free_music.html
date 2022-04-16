@@ -40,19 +40,14 @@
 
 <div class="flex-container">
   <!-- Genre List -->
-  {% if songs %} {% for song in songs %}
+  {% if categories %} {% for x in categories %}
   <div class="royalty">
-    <a href="{% url 'category' song.category %}"
-      ><div class="icon">
-        <img
-          src="{{ song.song_img.url}}"
-          class="img-responsive"
-          width="200"
-        />
-      </div>
 
-      <p>{{song.name}}</p>
-    </a>
+    <div>
+    {{x.name}}
+    </div>
+    <img src="{{x.category_img.url}}"></img>
+
   </div>
   {% endfor %} {% endif %}
 </div>

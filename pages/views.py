@@ -35,28 +35,9 @@ def discover(request):
 
 def free_music(request):
     # display all genres
-    genres = Genre.objects.all()
+    categories = Category.objects.all()
 
     context = {
-        'genres': genres
+        'categories':categories
     }
     return render(request, 'free_music.html', context=context)
-
-def player(request, genre_id):
-    songs = Song.objects.all()
-    genres = Genre.objects.filter(id=genre_id).first()
-    context = {
-        'genres': genres,
-        'songs': songs,
-    }
-    return render(request, 'player.html', context=context)
-
-def CategoryView(request, gen):
-    category_songs = Song.objects.filter(genre=gen)
-    context = {
-        'gen': gen,
-        'category_songs': category_songs,
-    }
-
-
-    return render(request, 'categories.html', context=context)
