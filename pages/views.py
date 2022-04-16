@@ -38,6 +38,17 @@ def free_music(request):
     categories = Category.objects.all()
 
     context = {
-        'categories':categories
+        'categories': categories
     }
     return render(request, 'free_music.html', context=context)
+
+def single_category(request, id=None):
+    song_obj = None
+    if id is not None:
+        song_obj = Song.objects.get(id=id)
+    context = {
+        'object': song_obj,
+    }
+
+    return render(request, 'single_category.html', context=context)
+
