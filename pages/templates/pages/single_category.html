@@ -11,23 +11,40 @@
   src="https://kit.fontawesome.com/351e8914ed.js"
   crossorigin="anonymous"
 ></script>
-<div class="hero"><p>single category view</p></div>
+<script src="https://unpkg.com/wavesurfer.js"></script>
+<div class="hero">
+  <p>single category view</p>
+  {{category.name}}
+</div>
 
 <div class="flex-container">
   <!-- Genre List -->
-  {% if categories %} {% for x in categories %}
-  <div class="royalty">
-      <div class="icon">
-        <img
-          src="{{ x.category_img.url}}"
-          class="img-responsive"
-          width="200"
-        />
-      </div>
 
-      <p>{{x.name}}</p>
+  <div class="flex-container">
+    <div class="royalty">
+      {% for song in songs %}
+      <div>
+        <div class="icon">{{song.name}}</div>
+        <img src="{{song.song_img.url}}" />
+      </div>
+      <div id="waveform"></div>
+      <audio controls>
+        <source src="{{ song.song_file.url }}" type="audio/mpeg" />
+      </audio>
+      {% endfor %}
+    </div>
   </div>
-  {% endfor %} {% endif %}
 </div>
 
-{% endblock content %}
+{% block script %}
+
+<script type="text/javascript">
+  var path = "{{ song.song_file.url }}";
+  var wavesurfer = WaveSurfer.create({
+    container: "#waveform",
+    scrollParent: true,
+  });
+  // wavesurfer.load("{{ song.song_file.url }}");
+  console.log(path);
+</script>
+{% endblock script %} {% endblock content %}

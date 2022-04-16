@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -33,6 +33,7 @@ def discover(request):
     else:
         return render(request, 'discover.html')
 
+# category list view
 def free_music(request):
     # display all genres
     categories = Category.objects.all()
@@ -42,13 +43,13 @@ def free_music(request):
     }
     return render(request, 'free_music.html', context=context)
 
-def single_category(request, id=None):
-    song_obj = None
-    if id is not None:
-        song_obj = Song.objects.get(id=id)
+# song list view of each category
+def single_category(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    songs = Song.objects.filter(category=category)
     context = {
-        'object': song_obj,
+        'category': category,
+        'songs': songs,
     }
 
     return render(request, 'single_category.html', context=context)
-

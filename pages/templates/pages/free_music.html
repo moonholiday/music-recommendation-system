@@ -40,18 +40,20 @@
 
 <div class="flex-container">
   <!-- Genre List -->
-  {% if categories %} {% for x in categories %}
-  <div class="royalty">
-      <div class="icon">
-        <img
-          src="{{ x.category_img.url}}"
-          class="img-responsive"
-          width="200"
-        />
-      </div>
+  {% if categories %} {% for category in categories %}
 
-      <p>{{x.name}}</p>
+  <div class="royalty">
+    <a href="{% url 'single_category' category.slug %}">
+      <img
+        class="icon"
+        src="{{ category.category_img.url }}"
+        alt="{{
+      category.name }}"
+      />
+      <strong>{{ category.name }}</strong>
+    </a>
   </div>
+
   {% endfor %} {% endif %}
 </div>
 
