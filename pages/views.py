@@ -6,6 +6,9 @@ from django.http import HttpResponseRedirect
 import sys
 from .models import *
 
+client_id="b4dad3bdf5144e6f8f408ec2f6f278a3"
+client_secret="a1e9ff23036a4444abcf6067fd63c2ca"
+
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
@@ -15,13 +18,21 @@ class AboutPageView(TemplateView):
 class FaqPageView(TemplateView):
     template_name = 'faq.html'
 
-class GenrePageView(TemplateView):
-    template_name = 'genre.html'
+def GenrePageView(request):
+    sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
+    genres = sp.categories()
+    new = []
+    for idx, genre  in enumerate(genres['categories']['items']):
+        new += (idx, genre['name'])
+        print(new)
+
+    context = {'genre_list': new}
+    return render(request, 'genre.html', context = context)
 
 def discover(request):
     query = request.POST.get('q')
     if request.method=='POST':
-        sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id="b4dad3bdf5144e6f8f408ec2f6f278a3", client_secret="a1e9ff23036a4444abcf6067fd63c2ca"))
+        sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
         result = sp.search(q=query, limit=20)
         new = []
 
