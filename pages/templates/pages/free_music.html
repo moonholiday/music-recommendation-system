@@ -37,22 +37,20 @@
     </form>
   </div>
 </div>
+<div class="container">
+  <div class="flex-container">
+    <!-- Genre List -->
+    {% if categories %} {% for category in categories %}
 
-<div class="flex-container">
-  <!-- Genre List -->
-  {% if categories %} {% for category in categories %}
+    <div class="royalty">
+      <a href="{% url 'single_category' category.slug %}">
+        <img class="icon" src="{{ category.category_img.url }}" />
+        <strong>{{ category.name }}</strong>
+      </a>
+    </div>
 
-  <div class="royalty">
-    <a href="{% url 'single_category' category.slug %}">
-      <img
-        class="icon"
-        src="{{ category.category_img.url }}"
-      />
-      <strong>{{ category.name }}</strong>
-    </a>
+    {% endfor %} {% endif %}
   </div>
-
-  {% endfor %} {% endif %}
 </div>
 
 {% endblock content %}

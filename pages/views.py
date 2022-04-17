@@ -21,11 +21,10 @@ class FaqPageView(TemplateView):
 def GenrePageView(request):
     sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
     genres = sp.categories()
+    print(genres)
     new = []
-    for idx, genre  in enumerate(genres['categories']['items']):
-        new += (idx, genre['name'])
-        print(new)
-
+    for idx, genre in enumerate(genres['categories']['items']):
+        new += (idx, genre['name'], genre['href'], genre['icons'])
     context = {'genre_list': new}
     return render(request, 'genre.html', context = context)
 
@@ -34,12 +33,12 @@ def discover(request):
     if request.method=='POST':
         sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
         result = sp.search(q=query, limit=20)
+        print(result)
         new = []
 
         for idx, track in enumerate(result['tracks']['items']):
-            new += (idx, track['name'])
+            new += (idx, track['name'], track['external_urls'])
 
-        print(new)
         return render(request, 'discover.html', {'result': new})
     else:
         return render(request, 'discover.html')
