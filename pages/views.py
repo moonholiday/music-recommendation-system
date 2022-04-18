@@ -57,9 +57,12 @@ def free_music(request):
 def single_category(request, slug):
     category = get_object_or_404(Category, slug=slug)
     songs = Song.objects.filter(category=category)
+    song_list = list(Song.objects.all().values())
+
     context = {
         'category': category,
         'songs': songs,
+        'song_list': song_list,
     }
 
     return render(request, 'single_category.html', context=context)

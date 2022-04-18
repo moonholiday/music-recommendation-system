@@ -1,4 +1,4 @@
-.audio-player {
+/* .audio-player {
   width: 15rem;
   height: 15rem;
 }
@@ -32,6 +32,7 @@
 }
 
 .player-button {
+  display: block;
   background-color: transparent;
   border: 0;
   width: var(--player-button-width);
@@ -106,4 +107,4 @@
   height: var(--sound-button-width);
   cursor: pointer;
   padding: 0;
-}
+} */

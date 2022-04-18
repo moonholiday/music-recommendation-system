@@ -1,15 +1,25 @@
 from django.db import models
 from django.utils.text import slugify
+from .helpers import get_audio_length
+from .validators import validate_is_audio
 
 class Song(models.Model):
     name=models.CharField(max_length=200)
     category=models.ForeignKey('Category', on_delete=models.CASCADE, null=True, blank=True)
     song_img=models.FileField()
     artist=models.CharField(max_length=200)
-    song_file=models.FileField()
+    time_length=models.DecimalField(null=True, max_digits=20, decimal_places=2,blank=True)
+    song_file=models.FileField(validators=[validate_is_audio])
 
     def __str__(self):
         return self.name
+    def save(self,*args, **kwargs):
+        if not self.time_length:
+            # logic for getting length of audio
+            audio_length=get_audio_length(self.song_file)
+            self.time_length =f'{audio_length:.2f}'
+
+        return super().save(*args, **kwargs)
 
 class Category(models.Model):
     name=models.CharField( max_length=200)
