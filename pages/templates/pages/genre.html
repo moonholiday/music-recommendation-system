@@ -9,7 +9,9 @@
     crossorigin="anonymous"
   ></script>
 
-  <h1 class="heading"><b>Explore Genres</b></h1>
+  <div class="flex-container">
+    <div class="mt-10 text-2xl">Explore Genres</div>
+  </div>
   <hr />
   <body>
     <div class="container">
@@ -17,12 +19,10 @@
         {% for x in genre_list %}
         <div class="royalty">
           {{x.name}}
-          <img src="{{x.icons.0.url}}" alt="">
+          <img src="{{x.icons.0.url}}" alt="" />
         </div>
         {% endfor %}
-
       </div>
-
     </div>
   </body>
 </html>

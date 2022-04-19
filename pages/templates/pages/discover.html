@@ -13,36 +13,32 @@
 ></script>
 
 <div class="hero"><p>Discover page</p></div>
-<div class="grid  place-content-center">
+<div class="grid place-content-center">
   <span class="text-xl mb-10">Suggestion based on what you love</span>
 </div>
 
-
 <div class="flex-container">
-  <div id="content">
-    <form class="form-inline" method="post">
-      {% csrf_token %}
-      <div>
+  <div
+    id="container h-screen flex justify-center items-center px-4 sm:px-6 lg:px-8"
+  >
+    <div class="relative">
+      <form method="post">
+        {% csrf_token %}
         <input
           type="search"
           id="search"
-          class="form-control search-form"
+          class="h-12 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"
           placeholder="Search.."
           name="q"
         />
-        <span class="input-group-btn">
-          <button
-            id="search-this"
-            type="submit"
-            class="pull-right btn btn-default search-btn"
-          >
-            <i class="fa fa-search"></i>
-          </button>
-        </span>
-      </div>
-    </form>
+        <button id="search-this" type="submit" class="absolute top-4 right-3">
+          <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
+        </button>
+      </form>
+    </div>
   </div>
 </div>
+
 <!-- <form class="w-8/12 shadow p-4 flex" method="post">
   {% csrf_token %}
        <span class="w-auto flex justify-end items-center text-grey p-2">
@@ -59,17 +55,20 @@
 <div class="container">
   <div class="flex-container">
     {% for x in res_list %}
-    <div class="object-center w-8/12 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-black ">
-      <button type="button" class="relative inline-flex items-center w-full px-8 py-2 text-sm font-medium border-b border-gray-200 rounded-t-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-
+    <div
+      class="object-center w-8/12 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-black"
+    >
+      <button
+        type="button"
+        class="relative inline-flex items-center w-full px-8 py-2 text-sm font-medium border-b border-gray-200 rounded-t-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white flex justify-between ..."
+      >
         <img class="mr-20" src="{{x.album.images.2.url}}" alt="" />
-        {{x.name}}
-        <span class="" object-right">{{x.album.artists.0.name}}</span>
+        <div class="mr-20">{{x.name}}</div>
+        <div class="object-none object-right">{{x.album.artists.0.name}}</div>
       </button>
     </div>
-    <br>
+    <br />
     {% endfor %}
   </div>
-
 </div>
 {% endif%} {% endblock content %}

@@ -27,7 +27,7 @@ def GenrePageView(request):
 
     # print(genre1)
     genre_list = genres['categories']['items']
-    print(genre_list)
+    # print(genre_list)
 
 
     context = {'genre_list': genre_list}
@@ -53,7 +53,7 @@ def discover(request):
         res = spotify.search({"track": query}, search_type="track")
 
         res_list = res['tracks']['items'][:7]
-        print(res_list)
+        # print(res_list)
 
         return render(request, 'discover.html', {'res_list': res_list})
     else:
