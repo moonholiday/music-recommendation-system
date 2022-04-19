@@ -1,10 +1,12 @@
+import sys
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 from django.http import HttpResponseRedirect
-import sys
 from .models import *
+from .spotify_client import *
+import json
 
 client_id="b4dad3bdf5144e6f8f408ec2f6f278a3"
 client_secret="a1e9ff23036a4444abcf6067fd63c2ca"
@@ -20,28 +22,45 @@ class FaqPageView(TemplateView):
 
 def GenrePageView(request):
     sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
-    genres = sp.categories()
-    print(genres)
-    new = []
-    for idx, genre in enumerate(genres['categories']['items']):
-        new += (idx, genre['name'], genre['href'], genre['icons'])
-    context = {'genre_list': new}
+    genres = sp.categories(country=None, locale=None, limit=10, offset=0)
+    # print(genres)
+
+    # print(genre1)
+    genre_list = genres['categories']['items']
+    print(genre_list)
+
+
+    context = {'genre_list': genre_list}
     return render(request, 'genre.html', context = context)
 
 def discover(request):
     query = request.POST.get('q')
+    # if request.method=='POST':
+    #     sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
+    #     result = sp.search(q=query, limit=20)
+    #     print(result)
+    #     new = []
+    #
+    #     for idx, track in enumerate(result['tracks']['items']):
+    #         new += (idx, track['name'], track['external_urls'])
+    #
+    #     return render(request, 'discover.html', {'result': new})
+    # else:
+    #     return render(request, 'discover.html')
+
     if request.method=='POST':
-        sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
-        result = sp.search(q=query, limit=20)
-        print(result)
-        new = []
+        spotify = SpotifyAPI(client_id, client_secret)
+        res = spotify.search({"track": query}, search_type="track")
 
-        for idx, track in enumerate(result['tracks']['items']):
-            new += (idx, track['name'], track['external_urls'])
+        res_list = res['tracks']['items'][:7]
+        print(res_list)
 
-        return render(request, 'discover.html', {'result': new})
+        return render(request, 'discover.html', {'res_list': res_list})
     else:
         return render(request, 'discover.html')
+
+
+
 
 # category list view
 def free_music(request):

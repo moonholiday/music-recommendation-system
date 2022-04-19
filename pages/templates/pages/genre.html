@@ -13,9 +13,16 @@
   <hr />
   <body>
     <div class="container">
-      {% for x in genre_list %}
-      <li>{{x}}</li>
-      {% endfor %}
+      <div class="flex-container">
+        {% for x in genre_list %}
+        <div class="royalty">
+          {{x.name}}
+          <img src="{{x.icons.0.url}}" alt="">
+        </div>
+        {% endfor %}
+
+      </div>
+
     </div>
   </body>
 </html>
