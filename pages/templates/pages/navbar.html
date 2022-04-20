@@ -33,6 +33,13 @@
           >
             <span>Free Music</span>
           </a>
+
+          <a
+              href="{% url 'genre'%}"
+            class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
+          >
+            <span>Explore</span>
+          </a>
           <a
               href="{% url 'about' %}"
             class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
@@ -41,7 +48,8 @@
           </a>
           {% if request.user.is_authenticated %}
 
-              <span class="ml-2 mr-2 text-white">Hello, {{request.user.first_name}}</span>
+              <span class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center"
+ >Hello, {{request.user.first_name}}</span>
               <a
                   href="{% url 'logout' %}"
                 class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
