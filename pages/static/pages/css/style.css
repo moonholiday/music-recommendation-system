@@ -14,9 +14,6 @@ a {
   text-decoration: none;
   color: black;
 }
-nav a {
-  color: white;
-}
 .footer a {
   color: white;
 }
@@ -33,52 +30,6 @@ body {
 
 nav {
   background-color: #101827;
-  padding: 7px;
-}
-nav ul {
-  float: right;
-  margin-right: 5px;
-}
-nav ul li {
-  display: inline-block;
-  line-height: 50px;
-  margin: 0 0px;
-}
-nav ul li a {
-  color: #fff;
-  font-size: 15px;
-}
-
-/* Style the active/current link*/
-nav a {
-  color: #fff;
-  font-size: 17px;
-  margin: 20px;
-}
-
-.logo {
-  margin-left: 0.6em;
-  float: left;
-}
-
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.checkbtn {
-  font-size: 30px;
-  color: gray;
-  float: right;
-  display: none;
-  cursor: pointer;
-  margin-right: 10px;
-  margin-top: 10px;
-}
-
-#check {
-  display: none;
 }
 
 /* main section */
@@ -120,7 +71,7 @@ nav a {
 }
 
 .flex-container {
-  paddgin: 2em;
+  padding: 2em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -173,37 +124,3 @@ input-group-btn {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 1250px) {
-  nav a {
-    margin: 10px;
-  }
-}
-
-@media screen and (max-width: 969px) {
-  .checkbtn {
-    display: block;
-  }
-  nav ul {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: #151c2b;
-    top: 80px;
-    left: -100%;
-    text-align: center;
-    transition: all 0.5s;
-  }
-  nav ul li {
-    display: block;
-  }
-  nav ul li a {
-    font-size: 20px;
-  }
-
-  #check:checked ~ ul {
-    left: 0;
-  }
-  nav input[type="text"] {
-    display: none;
-  }
-}

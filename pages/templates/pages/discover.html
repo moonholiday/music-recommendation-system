@@ -50,9 +50,10 @@
                type="submit">Search</p>
        </button>
    </form> -->
-{% if res_list %}
 
 <div class="container">
+
+    {% if res_list %}
   <div class="flex-container">
     {% for x in res_list %}
     <div
@@ -69,6 +70,18 @@
     </div>
     <br />
     {% endfor %}
+
   </div>
+  {%endif%}
+
+<iframe
+  src="https://open.spotify.com/embed/playlist/6fIVkafVqvn6hcp2aKjwb0?utm_source=generator&theme=0"
+  width="100%"
+  height="500"
+  frameborder="0"
+  allowfullscreen=""
+  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+></iframe>
 </div>
-{% endif%} {% endblock content %}
+
+{% endblock content %}

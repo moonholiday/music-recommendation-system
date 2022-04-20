@@ -29,7 +29,6 @@ def GenrePageView(request):
     genre_list = genres['categories']['items']
     # print(genre_list)
 
-
     context = {'genre_list': genre_list}
     return render(request, 'genre.html', context = context)
 
@@ -58,8 +57,6 @@ def discover(request):
         return render(request, 'discover.html', {'res_list': res_list})
     else:
         return render(request, 'discover.html')
-
-
 
 
 # category list view
