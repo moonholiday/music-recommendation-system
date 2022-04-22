@@ -9,8 +9,6 @@ from .spotify_client import *
 import json
 import pickle
 
-with open('song_recommendation', 'rb') as f:
-    model = pickle.load(f)
 
 
 
@@ -76,7 +74,6 @@ def discover(request):
     else:
         return render(request, 'discover.html')
 
-    model.recommend_songs([{'name': 'stan'}])
 
 
 # category list view

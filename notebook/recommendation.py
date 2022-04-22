@@ -130,69 +130,70 @@ import difflib
 number_cols = ['valence', 'acousticness', 'danceability', 'duration_ms', 'energy', 'explicit',
  'instrumentalness', 'key', 'liveness', 'loudness', 'mode', 'popularity', 'speechiness', 'tempo']
 
+class Rec:
 
-def get_song_data(song, spotify_data):
+    def get_song_data(song, spotify_data):
 
-    try:
-        song_data = spotify_data[(spotify_data['name'] == song['name'])].iloc[0]
-        return song_data
+        try:
+            song_data = spotify_data[(spotify_data['name'] == song['name'])].iloc[0]
+            return song_data
 
-    except IndexError:
-        return find_song(song['name'])
-
-
-def get_mean_vector(song_list, spotify_data):
-
-    song_vectors = []
-
-    for song in song_list:
-        song_data = get_song_data(song, spotify_data)
-        if song_data is None:
-            print('Warning: {} does not exist in Spotify or in database'.format(song['name']))
-            continue
-        song_vector = song_data[number_cols].values
-        song_vectors.append(song_vector)
-
-    song_matrix = np.array(list(song_vectors))
-    return np.mean(song_matrix, axis=0)
+        except IndexError:
+            return find_song(song['name'])
 
 
-def flatten_dict_list(dict_list):
+    def get_mean_vector(song_list, spotify_data):
 
-    flattened_dict = defaultdict()
-    for key in dict_list[0].keys():
-        flattened_dict[key] = []
+        song_vectors = []
 
-    for dictionary in dict_list:
-        for key, value in dictionary.items():
-            flattened_dict[key].append(value)
+        for song in song_list:
+            song_data = Rec.get_song_data(song, spotify_data)
+            if song_data is None:
+                print('Warning: {} does not exist in Spotify or in database'.format(song['name']))
+                continue
+            song_vector = song_data[number_cols].values
+            song_vectors.append(song_vector)
 
-    return flattened_dict
+        song_matrix = np.array(list(song_vectors))
+        return np.mean(song_matrix, axis=0)
 
 
-def recommend_songs( song_list, spotify_data, n_songs=10):
+    def flatten_dict_list(dict_list):
 
-    metadata_cols = ['name', 'id', 'artists']
-    song_dict = flatten_dict_list(song_list)
+        flattened_dict = defaultdict()
+        for key in dict_list[0].keys():
+            flattened_dict[key] = []
 
-    song_center = get_mean_vector(song_list, spotify_data)
-    scaler = song_cluster_pipeline.steps[0][1]
-    scaled_data = scaler.transform(spotify_data[number_cols])
-    scaled_song_center = scaler.transform(song_center.reshape(1, -1))
-    distances = cdist(scaled_song_center, scaled_data, 'cosine')
-    index = list(np.argsort(distances)[:, :n_songs][0])
+        for dictionary in dict_list:
+            for key, value in dictionary.items():
+                flattened_dict[key].append(value)
 
-    rec_songs = spotify_data.iloc[index]
-    rec_songs = rec_songs[~rec_songs['name'].isin(song_dict['name'])]
-    return rec_songs[metadata_cols].to_dict(orient='records')
+        return flattened_dict
+
+
+    def recommend_songs( song_list, spotify_data, n_songs=10):
+
+        metadata_cols = ['name', 'id', 'artists']
+        song_dict = Rec.flatten_dict_list(song_list)
+
+        song_center = Rec.get_mean_vector(song_list, spotify_data)
+        scaler = song_cluster_pipeline.steps[0][1]
+        scaled_data = scaler.transform(spotify_data[number_cols])
+        scaled_song_center = scaler.transform(song_center.reshape(1, -1))
+        distances = cdist(scaled_song_center, scaled_data, 'cosine')
+        index = list(np.argsort(distances)[:, :n_songs][0])
+
+        rec_songs = spotify_data.iloc[index]
+        rec_songs = rec_songs[~rec_songs['name'].isin(song_dict['name'])]
+        return rec_songs[metadata_cols].to_dict(orient='records')
 
 
 # In[11]:
 
 
-recommend_songs([{'name': 'stan'}],  data)
-
-
+import pickle
+with open('song_recommendation', 'wb') as f:
+    pickle.dump(Rec,f)
 # In[ ]:
 
 

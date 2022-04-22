@@ -6,6 +6,8 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous"
   />
+  <!-- Css library -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelementplayer.css">
 
   <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
 
@@ -15,16 +17,49 @@
     crossorigin="anonymous"
   ></script>
 </head>
+<body>
+    <div class="players">
+        <audio id="player2" preload="none" controls style="width: 450px;">
+            <source src="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3" type="audio/mp3">                
+        </audio>
+    </div>
 
-<div class="flex justify-center">
-  {% for song in songs %} {{song.name}}
+<div class="flex justify-center m-4">
+  {% for song in songs %} 
   <img src="{{song.song_img.url}}" alt="" />
-  <audio controls="" name="media">
-    <source src="{{song.song_file.url}}" />
-  </audio>
+  <div class="m-4 flex flex-column">
+    <div class="text-xl ml-4 mb-2">
+    {{song.name}}
+    </div>
+    <audio controls="" name="media">
+      <source src="{{song.song_file.url}}" />
+    </audio>
+  </div>
   {% endfor %}
 </div>
-<!-- <script type="text/javascript">
 
-</script> -->
+    <!-- JS Library by CXDI -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelement.js"></script>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function()) {
+      var mediaElements = document.querySelectorAll('audio'), total = mediaElements.length;
+      for(var i = 0; i < total; i++) {
+          new MediaElementPlayer(mediaElements[i], {
+              pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.16/build/',
+              shimScriptAccess: 'always',
+              success: function () {
+                  var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
+                  for (var j = 0; j < targetTotal; j++) {
+                      target[j].style.visibilty = 'visible';
+                    }
+              
+                }
+            })
+        }
+    }
+
+
+
+</script>
+</body>
 {% endblock content %}
