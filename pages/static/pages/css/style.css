@@ -15,9 +15,7 @@ a {
   color: black;
 }
 
-
 a:hover {
-
   text-decoration: none;
 }
 
@@ -69,7 +67,7 @@ nav {
 }
 
 .flex-container {
-  padding: 2em;
+  padding: 1em;
   display: flex;
   align-items: center;
   justify-content: center;

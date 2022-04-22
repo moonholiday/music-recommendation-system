@@ -8,9 +8,8 @@ from .models import *
 from .spotify_client import *
 import json
 import pickle
-
-
-
+from slugify import slugify
+import re
 
 client_id="b4dad3bdf5144e6f8f408ec2f6f278a3"
 client_secret="a1e9ff23036a4444abcf6067fd63c2ca"
@@ -40,11 +39,18 @@ def GenrePageView(request):
     # print(test1)
 
 def genre_playlist(request):
+
+    category_id = request.POST.get('cat')
+    print(category_id)
+    filtered_list = list(filter(None, category_id))
+    re.sub('[^A-Za-z0-9]+', '', filtered_list)
+
+
     sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
     playlist = sp.category_playlists(category_id='rock')
-    pl_list = playlist['playlists']['href']
+    pl_list = playlist['playlists']['items']
     context = {'pl_list': pl_list}
-    print(playlist)
+    # print(playlist)
 
     return render(request, 'genre_playlist.html', context=context)
 

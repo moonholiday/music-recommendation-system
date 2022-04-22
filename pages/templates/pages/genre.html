@@ -16,36 +16,34 @@
     <div class="flex-container">
       {% for x in genre_list %}
       <div class="royalty">
-        <a href="{% url 'genre_playlist' %}"
-          >{{x.name}}
+        <a href="{% url 'genre_playlist' %}">
+          {% csrf_token %}
+          <div
+            style="cursor: pointer;"
+            onclick="myFunction(this.innerHTML)"
+            class="cat"
+          >
+            {{x.name}}
+          </div>
           <img src="{{x.icons.0.url}}" alt="" />
         </a>
-        <div class="flex items-center">
-          <button
-            class="mt-2 mr-4 w-14 h-14 rounded-full bg-blue-500 focus:outline-none"
-            onclick="play(play-btn);"
-          >
-            <i class="fa fa-play fa-2x text-white" id="play-btn"></i></button
-          ><span class="items-right">{{x.id}}</span>
-        </div>
       </div>
       {% endfor %}
     </div>
   </body>
   <script type="text/javascript">
-      var resume = document.getElementById('play-btn');
-      function play(play-btn) {
-
-      var resumeOn = resume.classList.contains("fa-play");
-
-      if (resumeOn) {
-      resume.classList.remove("fa-play");
-      resume.classList.add("fa-pause");
-      }
-      else {
-      resume.classList.remove("fa-pause");
-      resume.classList.add("fa-play");
-      }
+    function myFunction(genre) {
+      cat = genre;
+      console.log(cat);
+      $.ajax({
+        type: "POST",
+        url: "{% url 'genre_playlist' %}",
+        headers: {
+          "X-CSRFToken": document.querySelector('[name="csrfmiddlewaretoken"]')
+            .value,
+        },
+        data: { cat: cat },
+      });
     }
   </script>
 </html>

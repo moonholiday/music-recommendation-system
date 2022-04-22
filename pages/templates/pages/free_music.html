@@ -7,15 +7,11 @@
 />
 <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<script
-  src="https://kit.fontawesome.com/  351e8914ed.js"
-  crossorigin="anonymous"
-></script>
+
 <div class="hero"><p>Free Music page</p></div>
+
 <div class="flex-container">
-  <div
-    id="container h-screen flex justify-center items-center px-4 sm:px-6 lg:px-8"
-  >
+  <div id="container flex justify-center items-center px-4 sm:px-6 lg:px-8">
     <div class="relative">
       <form method="post">
         {% csrf_token %}
@@ -33,7 +29,7 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="md:container md:mx-auto bg-white">
   <div class="flex-container">
     <!-- Genre List -->
     {% if categories %} {% for category in categories %}

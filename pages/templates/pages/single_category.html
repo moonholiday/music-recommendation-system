@@ -1,14 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <head>
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous"
-  />
-  <!-- Css library -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelementplayer.css">
-
   <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,48 +9,59 @@
   ></script>
 </head>
 <body>
-    <div class="players">
-        <audio id="player2" preload="none" controls style="width: 450px;">
-            <source src="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3" type="audio/mp3">                
-        </audio>
-    </div>
-
-<div class="flex justify-center m-4">
-  {% for song in songs %} 
-  <img src="{{song.song_img.url}}" alt="" />
-  <div class="m-4 flex flex-column">
-    <div class="text-xl ml-4 mb-2">
-    {{song.name}}
-    </div>
-    <audio controls="" name="media">
-      <source src="{{song.song_file.url}}" />
+  <!-- <div class="players">
+    <audio id="player2" preload="none" controls style="width: 450px;">
+      <source
+        src="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3"
+        type="audio/mp3"
+      />
     </audio>
+  </div> -->
+  <div class="lg:container lg:mx-auto">
+    <div class="flex bg-white flex-column justify-center m-4">
+      {% for song in songs %}
+      <div class="m-6 flex flex-row">
+        <img class="w-36" src="{{song.song_img.url}}" alt="" />
+        <div class="m-4 flex flex-column">
+          <div class="text-xl ml-4 mb-2">
+            {{song.name}}
+          </div>
+          <audio style="" controls="" name="media">
+            <source src="{{song.song_file.url}}" />
+          </audio>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
-  {% endfor %}
-</div>
 
-    <!-- JS Library by CXDI -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelement.js"></script>
-<script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', function()) {
-      var mediaElements = document.querySelectorAll('audio'), total = mediaElements.length;
-      for(var i = 0; i < total; i++) {
-          new MediaElementPlayer(mediaElements[i], {
-              pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.16/build/',
-              shimScriptAccess: 'always',
-              success: function () {
-                  var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
-                  for (var j = 0; j < targetTotal; j++) {
-                      target[j].style.visibilty = 'visible';
-                    }
-              
-                }
-            })
+  <script type="text/javascript">
+    // Get all <audio> elements.
+    const audios = document.querySelectorAll("audio");
+
+    // Pause all <audio> elements except for the one that started playing.
+    function pauseOtherAudios({ target }) {
+      for (const audio of audios) {
+        if (audio !== target) {
+          audio.pause();
         }
+      }
     }
 
-
-
-</script>
+    // Listen for the 'play' event on all the <audio> elements.
+    for (const audio of audios) {
+      audio.addEventListener("play", pauseOtherAudios);
+    }
+  </script>
+  <script>
+    // You can use either a string for the player ID (i.e., `player`),
+    // or `document.querySelector()` for any selector
+    var player = new MediaElement("player", {
+      pluginPath: "/path/to/shims/",
+      success: function (mediaElement, originalNode) {
+        // do things
+      },
+    });
+  </script>
 </body>
 {% endblock content %}
