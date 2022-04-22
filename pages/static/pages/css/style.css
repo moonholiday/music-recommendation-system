@@ -14,12 +14,10 @@ a {
   text-decoration: none;
   color: black;
 }
-.footer a {
-  color: white;
-}
+
 
 a:hover {
-  color: gray;
+
   text-decoration: none;
 }
 
@@ -123,4 +121,3 @@ input-group-btn {
 .royalty img:hover {
   cursor: pointer;
 }
-

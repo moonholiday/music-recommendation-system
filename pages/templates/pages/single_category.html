@@ -1,5 +1,4 @@
-{% extends 'base.html' %}  {% load static %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <head>
   <link
     rel="stylesheet"
@@ -17,16 +16,15 @@
   ></script>
 </head>
 
-
-<div>
-    {% for song in songs %}
-      {{song.name}}
-      <img src="{{song.song_img.url}}" alt="">
-      <audio controls="" name="media">
-        <source src="{{song.song_file.url}}">
-      </audio>
-    {% endfor %}
+<div class="flex justify-center">
+  {% for song in songs %} {{song.name}}
+  <img src="{{song.song_img.url}}" alt="" />
+  <audio controls="" name="media">
+    <source src="{{song.song_file.url}}" />
+  </audio>
+  {% endfor %}
 </div>
+<!-- <script type="text/javascript">
 
-
- {% endblock content %}
+</script> -->
+{% endblock content %}

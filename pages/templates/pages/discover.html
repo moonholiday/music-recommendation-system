@@ -1,10 +1,5 @@
 {% extends 'base.html' %} {% block content %}{% load static %}
-<link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-  crossorigin="anonymous"
-/>
+
 <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script
@@ -18,9 +13,7 @@
 </div>
 
 <div class="flex-container">
-  <div
-    id="container h-screen flex justify-center items-center px-4 sm:px-6 lg:px-8"
-  >
+  <div class="flex justify-center items-center px-4 sm:px-6 lg:px-8">
     <div class="relative">
       <form method="post">
         {% csrf_token %}
@@ -28,52 +21,48 @@
           type="search"
           id="search"
           class="h-12 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"
-          placeholder="Search.."
+          placeholder="Search for song name.."
           name="q"
         />
         <button id="search-this" type="submit" class="absolute top-4 right-3">
           <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
         </button>
       </form>
+      <button class="btn" type="button" name="button">
+        Generate
+      </button>
     </div>
   </div>
 </div>
 
-<!-- <form class="w-8/12 shadow p-4 flex" method="post">
-  {% csrf_token %}
-       <span class="w-auto flex justify-end items-center text-grey p-2">
-           <i class="material-icons text-3xl">search</i>
-       </span>
-       <input class="w-full rounded p-2" type="text" placeholder="Try 'Los Angeles'">
-       <button class="bg-red-light hover:bg-red-lighter rounded text-white p-2 pl-4 pr-4">
-               <p class="font-semibold text-xl" id="search-this"
-               type="submit">Search</p>
-       </button>
-   </form> -->
-
-<div class="container">
-
-    {% if res_list %}
-  <div class="flex-container">
-    {% for x in res_list %}
-    <div
-      class="object-center w-8/12 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-black"
-    >
-      <button
-        type="button"
-        class="relative inline-flex items-center w-full px-8 py-2 text-sm font-medium border-b border-gray-200 rounded-t-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white flex justify-between ..."
-      >
-        <img class="mr-20" src="{{x.album.images.2.url}}" alt="" />
-        <div class="mr-20">{{x.name}}</div>
-        <div class="object-none object-right">{{x.album.artists.0.name}}</div>
-      </button>
+<div
+  class="flex flex-col container max-w-md mt-10 mx-auto w-full items-center justify-center shadow"
+>
+  {% if res_list %} {% for x in res_list %}
+  <div
+    class="pl-3 w-full object-center w-8/12 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-black mb-2"
+  >
+    <div class="float-left m-2">
+      <img class="" src="{{x.album.images.2.url}}" alt="" />
+      <div class="inline">{{x.name}}</div>
+      <div class="">{{x.album.artists.0.name}}</div>
+      <div class="ml-4"></div>
+      <div id="track-id">
+        {{x.id}}
+      </div>
     </div>
-    <br />
-    {% endfor %}
 
+    <button
+      class="float-right bg-white hover:text-blue-700 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow m-2"
+      onclick="added()"
+    >
+      Add
+    </button>
+    <p id="add"></p>
   </div>
-  {%endif%}
-
+  {% endfor %}
+</div>
+{%endif%}
 <iframe
   src="https://open.spotify.com/embed/playlist/6fIVkafVqvn6hcp2aKjwb0?utm_source=generator&theme=0"
   width="100%"
@@ -82,6 +71,13 @@
   allowfullscreen=""
   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 ></iframe>
-</div>
+
+<script type="text/javascript">
+  function added() {
+    trackId = document.getElementById("track-id").innerHTML;
+    console.log(trackId);
+    document.getElementById("add").innerHTML = "added";
+  }
+</script>
 
 {% endblock content %}

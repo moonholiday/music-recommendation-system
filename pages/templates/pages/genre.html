@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
-  <link rel="stylesheet" href="{% static 'pages/css/genre.css' %}" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script
     src="https://kit.fontawesome.com/351e8914ed.js"
@@ -12,18 +11,42 @@
   <div class="flex-container">
     <div class="mt-10 text-2xl">Explore Genres</div>
   </div>
-  <hr />
+
   <body>
-    <div class="container">
-      <div class="flex-container">
-        {% for x in genre_list %}
-        <div class="royalty">
-          {{x.name}}
+    <div class="flex-container">
+      {% for x in genre_list %}
+      <div class="royalty">
+        <a href="{% url 'genre_playlist' %}"
+          >{{x.name}}
           <img src="{{x.icons.0.url}}" alt="" />
+        </a>
+        <div class="flex items-center">
+          <button
+            class="mt-2 mr-4 w-14 h-14 rounded-full bg-blue-500 focus:outline-none"
+            onclick="play(play-btn);"
+          >
+            <i class="fa fa-play fa-2x text-white" id="play-btn"></i></button
+          ><span class="items-right">{{x.id}}</span>
         </div>
-        {% endfor %}
       </div>
+      {% endfor %}
     </div>
   </body>
+  <script type="text/javascript">
+      var resume = document.getElementById('play-btn');
+      function play(play-btn) {
+
+      var resumeOn = resume.classList.contains("fa-play");
+
+      if (resumeOn) {
+      resume.classList.remove("fa-play");
+      resume.classList.add("fa-pause");
+      }
+      else {
+      resume.classList.remove("fa-pause");
+      resume.classList.add("fa-play");
+      }
+    }
+  </script>
 </html>
 {% endblock content %}
