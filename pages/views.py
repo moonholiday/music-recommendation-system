@@ -10,6 +10,7 @@ import json
 import pickle
 from slugify import slugify
 import re
+from pages.model1 import *
 
 client_id="b4dad3bdf5144e6f8f408ec2f6f278a3"
 client_secret="a1e9ff23036a4444abcf6067fd63c2ca"
@@ -41,8 +42,7 @@ def GenrePageView(request):
 def genre_playlist(request):
 
     category_id = request.POST.get('cat')
-
-    print(type((category_id)))
+    print(category_id)
 
     sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
     playlist = sp.category_playlists(category_id='rock')
@@ -65,15 +65,15 @@ def discover(request):
     #
     #     return render(request, 'discover.html', {'result': new})
     # else:
-    #     return render(request, 'discover.html')
+
 
     if request.method=='POST':
         spotify = SpotifyAPI(client_id, client_secret)
-        res = spotify.search({"track": query}, search_type="track")
+        recommendations = recommend_songs([{'name': query}])
 
-        res_list = res['tracks']['items'][:7]
-        # print(res_list)
-
+        res_list = recommendations
+        print(res_list)
+    #
         return render(request, 'discover.html', {'res_list': res_list})
     else:
         return render(request, 'discover.html')

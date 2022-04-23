@@ -9,7 +9,7 @@
 
 <div class="hero"><p>Discover page</p></div>
 <div class="grid place-content-center">
-  <span class="text-xl mb-10">Suggestion based on what you love</span>
+  <p class="text-xl mb-6">Suggestion based on what you love</p>
 </div>
 
 <div class="container">
@@ -21,68 +21,50 @@
           type="search"
           id="search"
           class="h-12 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"
-          placeholder="Search for song name.."
+          placeholder="Search.."
           name="q"
         />
         <button id="search-this" type="submit" class="absolute top-4 right-3">
           <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
         </button>
       </form>
-      <button class="btn" type="button" name="button">
-        Generate
-      </button>
+
     </div>
   </div>
 </div>
 <div
-  class="flex flex-col container max-w-md mt-10 mx-auto w-full items-center justify-center shadow"
->
-  {% if res_list %} {% for x in res_list %}
-  <div
-    class="pl-3 w-full object-center w-8/12 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-black mb-2"
-  >
-    <div class="float-left m-2">
-      <img class="" src="{{x.album.images.2.url}}" alt="" />
-      <div class="inline">{{x.name}}</div>
-      <div class="">{{x.album.artists.0.name}}</div>
-      <div class="ml-4"></div>
-      <div id="track-id">
-        {{x.id}}
-      </div>
-    </div>
+  class="flex flex-col container max-w-md mt-10 mx-auto w-full items-center justify-center shadow">
+  {% if res_list %}  <div class="text-lg mb-4">
+      Here are some recommended songs for you :)
+    </div> {% for x in res_list %}
 
-    <button
-      class="float-right bg-white hover:text-blue-700 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow m-2"
-      onclick="added()"
-    >
-      Add
-    </button>
-    <p id="add"></p>
+  <div
+    class="pl-3 w-full object-center w-8/12  border border-gray-200 rounded-lg dark:text-black mb-2">
+      <div id="track">
+        <iframe class = 'm-2' style="border-radius:6px" src="https://open.spotify.com/embed/track/{{x.id}}?utm_source=generator" width="100%" height="100px" frameBorder="5" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      </div>
   </div>
   {% endfor %} {%endif%}
-  <iframe
-    src="https://open.spotify.com/embed/playlist/6fIVkafVqvn6hcp2aKjwb0?utm_source=generator&theme=0"
-    width="50%"
-    height="500"
-    frameborder="0"
-    allowfullscreen=""
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-  ></iframe>
-  <iframe
-    src="https://open.spotify.com/embed/playlist/6fIVkafVqvn6hcp2aKjwb0?utm_source=generator&theme=0"
-    width="50%"
-    height="500"
-    frameborder="0"
-    allowfullscreen=""
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-  ></iframe>
 </div>
 
 <script type="text/javascript">
-  function added() {
-    trackId = document.getElementById("track-id").innerHTML;
-    console.log(trackId);
-    document.getElementById("add").innerHTML = "added";
+
+
+  // Get all <audio> elements.
+  const audios = document.getElementById("track");
+
+  // Pause all <audio> elements except for the one that started playing.
+  function pauseOtherAudios({ target }) {
+    for (const audio of audios) {
+      if (audio !== target) {
+        audio.pause();
+      }
+    }
+  }
+
+  // Listen for the 'play' event on all the <audio> elements.
+  for (const audio of audios) {
+    audio.addEventListener("play", pauseOtherAudios);
   }
 </script>
 
