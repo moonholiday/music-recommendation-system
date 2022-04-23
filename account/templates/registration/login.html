@@ -7,14 +7,13 @@
   crossorigin="anonymous"
 />
 <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
-<div class="container">
-    <div class="form-control">
-        <h3>Login to your account</h3>
-<br>
-        <form action="{% url 'login' %}" method="post">
+<div class="flex-container  h-screen">
+    <div  style='padding:2em' class="form bg-white ">
+        <div class="text-2xl py-4" style="text-align: center">Login to your account</div>
+        <form  action="{% url 'login' %}" method="post">
             {{ form|crispy }}
             {% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}" />
+            <input  type="hidden" name="next" value="{{ next }}" />
             <p><input type="submit" value="Log-in" class="btn btn-primary"></p>
          </form>
          <p><a href="{% url "password_reset" %}" style="color: black">Forgotten your password?</a></p>

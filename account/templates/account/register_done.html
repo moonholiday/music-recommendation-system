@@ -9,7 +9,10 @@
   crossorigin="anonymous"
 />
 <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
- <h1>Welcome {{ new_user.first_name }}!</h1>
- <p>Your account has been successfully created. Now you can <a
-href="{% url "login" %}">log in</a>.</p>
+<div class="container h-screen">
+  <h1>Welcome {{ new_user.first_name }}!</h1>
+  <p>Your account has been successfully created. Now you can <a
+ href="{% url "login" %}">log in</a>.</p>
+</div>
+
 {% endblock %}

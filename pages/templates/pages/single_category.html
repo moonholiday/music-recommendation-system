@@ -1,67 +1,57 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <head>
+  <script src="/path/to/dist/speed/speed.min.js"></script>
+  <!-- Translation file for plugin (includes ALL languages available on player)-->
+  <script src="/path/to/dist/speed/speed-i18n.js"></script>
+  <link rel="stylesheet" href="/path/to/mediaelementplayer.min.css" />
+  <link rel="stylesheet" href="/path/to/dist/speed/speed.min.css" />
   <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script
-    src="https://kit.fontawesome.com/351e8914ed.js"
-    crossorigin="anonymous"
-  ></script>
 </head>
-<body>
-  <!-- <div class="players">
-    <audio id="player2" preload="none" controls style="width: 450px;">
-      <source
-        src="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3"
-        type="audio/mp3"
-      />
-    </audio>
-  </div> -->
-  <div class="lg:container lg:mx-auto">
-    <div class="flex bg-white flex-column justify-center m-4">
-      {% for song in songs %}
-      <div class="m-6 flex flex-row">
-        <img class="w-36" src="{{song.song_img.url}}" alt="" />
-        <div class="m-4 flex flex-column">
-          <div class="text-xl ml-4 mb-2">
-            {{song.name}}
-          </div>
-          <audio style="" controls="" name="media">
-            <source src="{{song.song_file.url}}" />
-          </audio>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
+
+<div class="lg:container lg:mx-auto h-screen">
+  <div class="flex-container text-2xl m-6">
+    {{category.name}}
   </div>
+  <div class="flex flex-column justify-center m-4">
+    {% for song in songs %}
+    <div class="ml-4 mr-4 bg-white flex flex-row items-center">
+      <img class="w-36 mr-4" src="{{song.song_img.url}}" alt="" />
 
-  <script type="text/javascript">
-    // Get all <audio> elements.
-    const audios = document.querySelectorAll("audio");
+      <audio class="audio mr-4" style="width: 100%;" controls="" name="media">
+        <source
+          onclick="myFunction(this.innerHTML)"
+          src="{{song.song_file.url}}"
+        />
+      </audio>
+    </div>
+    <div class="block ml-4 mb-4 text-lg">
+      {{song.name}}
+    </div>
 
-    // Pause all <audio> elements except for the one that started playing.
-    function pauseOtherAudios({ target }) {
-      for (const audio of audios) {
-        if (audio !== target) {
-          audio.pause();
-        }
+    {% endfor %}
+  </div>
+</div>
+<script src="https://unpkg.com/wavesurfer.js"></script>
+
+<script type="text/javascript">
+  // Get all <audio> elements.
+  const audios = document.querySelectorAll("audio");
+
+  // Pause all <audio> elements except for the one that started playing.
+  function pauseOtherAudios({ target }) {
+    for (const audio of audios) {
+      if (audio !== target) {
+        audio.pause();
       }
     }
+  }
 
-    // Listen for the 'play' event on all the <audio> elements.
-    for (const audio of audios) {
-      audio.addEventListener("play", pauseOtherAudios);
-    }
-  </script>
-  <script>
-    // You can use either a string for the player ID (i.e., `player`),
-    // or `document.querySelector()` for any selector
-    var player = new MediaElement("player", {
-      pluginPath: "/path/to/shims/",
-      success: function (mediaElement, originalNode) {
-        // do things
-      },
-    });
-  </script>
-</body>
+  // Listen for the 'play' event on all the <audio> elements.
+  for (const audio of audios) {
+    audio.addEventListener("play", pauseOtherAudios);
+  }
+</script>
+
 {% endblock content %}

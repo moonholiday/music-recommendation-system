@@ -16,7 +16,7 @@ a {
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 body {
@@ -118,4 +118,14 @@ input-group-btn {
 
 .royalty img:hover {
   cursor: pointer;
+}
+
+.form {
+  width: 700px;
+}
+
+@media only screen and (max-width: 600px) {
+  #haha {
+    width:100%;
+  }
 }
