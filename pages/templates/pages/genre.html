@@ -21,7 +21,6 @@
           <div
             style="cursor: pointer;"
             onclick="myFunction(this.innerHTML)"
-            class="cat"
           >
             {{x.name}}
           </div>
@@ -33,16 +32,14 @@
   </body>
   <script type="text/javascript">
     function myFunction(genre) {
-      cat = genre;
-      console.log(cat);
+      console.log(genre);
       $.ajax({
         type: "POST",
-        url: "{% url 'genre_playlist' %}",
         headers: {
           "X-CSRFToken": document.querySelector('[name="csrfmiddlewaretoken"]')
             .value,
         },
-        data: { cat: cat },
+        data: { cat: genre},
       });
     }
   </script>

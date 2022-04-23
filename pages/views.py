@@ -41,10 +41,8 @@ def GenrePageView(request):
 def genre_playlist(request):
 
     category_id = request.POST.get('cat')
-    print(category_id)
-    filtered_list = list(filter(None, category_id))
-    re.sub('[^A-Za-z0-9]+', '', filtered_list)
 
+    print(type((category_id)))
 
     sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
     playlist = sp.category_playlists(category_id='rock')
