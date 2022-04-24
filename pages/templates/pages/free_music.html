@@ -1,8 +1,5 @@
 {% extends 'base.html' %} {% block content %}{% load static %}
 
-<link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
 <div class="hero"><p>Free Music page</p></div>
 
 <div class="flex-container">
@@ -32,7 +29,7 @@
     <div class="royalty">
       <a href="{% url 'single_category' category.slug %}">
         <img class="icon" src="{{ category.category_img.url }}" />
-        <strong>{{ category.name }}</strong>
+        {{ category.name }}
       </a>
     </div>
 

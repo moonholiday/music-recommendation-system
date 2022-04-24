@@ -1,12 +1,5 @@
 {% extends 'base.html' %} {% block content %}{% load static %}
 
-<link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<script
-  src="https://kit.fontawesome.com/351e8914ed.js"
-  crossorigin="anonymous"
-></script>
-
 <div class="hero"><p>Discover page</p></div>
 <div class="grid place-content-center">
   <p class="text-xl mb-6">Suggestion based on what you love</p>
@@ -24,48 +17,41 @@
           placeholder="Search.."
           name="q"
         />
-        <button id="search-this" type="submit" class="absolute top-4 right-3">
-          <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
+        <button id="search-this" type="submit" class="absolute top-3 right-1">
+          <img src="{% static 'pages/images/fa_search.png'%}" alt="" />
         </button>
       </form>
-
     </div>
   </div>
 </div>
 <div
-  class="flex flex-col container max-w-md mt-10 mx-auto w-full items-center justify-center shadow">
-  {% if res_list %}  <div class="text-lg mb-4">
-      Here are some recommended songs for you :)
-    </div> {% for x in res_list %}
+  class="flex flex-col container max-w-md mt-10 mx-auto w-full items-center justify-center shadow"
+>
+  {% if res_list %}
+  <div class="text-lg mb-4">
+    Here are some recommended songs for you :)
+  </div>
+  {% for x in res_list %}
 
   <div
-    class="pl-3 w-full object-center w-8/12  border border-gray-200 rounded-lg dark:text-black mb-2">
-      <div id="track">
-        <iframe class = 'm-2' style="border-radius:6px" src="https://open.spotify.com/embed/track/{{x.id}}?utm_source=generator" width="100%" height="100px" frameBorder="5" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-      </div>
+    class="pl-3 w-full object-center w-8/12 border border-gray-200 rounded-lg dark:text-black mb-2"
+  >
+    <div id="track">
+      <iframe
+        class="m-2"
+        style="border-radius: 6px;"
+        src="https://open.spotify.com/embed/track/{{x.id}}?utm_source=generator"
+        width="100%"
+        height="100px"
+        frameborder="5"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      ></iframe>
+    </div>
   </div>
   {% endfor %} {%endif%}
 </div>
 
-<script type="text/javascript">
-
-
-  // Get all <audio> elements.
-  const audios = document.getElementById("track");
-
-  // Pause all <audio> elements except for the one that started playing.
-  function pauseOtherAudios({ target }) {
-    for (const audio of audios) {
-      if (audio !== target) {
-        audio.pause();
-      }
-    }
-  }
-
-  // Listen for the 'play' event on all the <audio> elements.
-  for (const audio of audios) {
-    audio.addEventListener("play", pauseOtherAudios);
-  }
-</script>
+<script type="text/javascript"></script>
 
 {% endblock content %}

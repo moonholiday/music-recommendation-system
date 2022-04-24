@@ -1,41 +1,35 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script
-    src="https://kit.fontawesome.com/351e8914ed.js"
-    crossorigin="anonymous"
-  ></script>
+
+<div class="flex-container">
+  <div class="mt-10 text-2xl">Explore Genres</div>
+</div>
+<body>
   <div class="flex-container">
-    <div class="mt-10 text-2xl">Explore Genres</div>
-  </div>
-  <body>
-    <div class="flex-container">
-      {% for x in genre_list %}
-      <div class="royalty">
-        <a href="{% url 'genre_playlist' %}">
-          {% csrf_token %}
-          <div style="cursor: pointer;"
-            onclick="myFunction(this.innerHTML)">{{x.name}}</div>
-          <img src="{{x.icons.0.url}}" alt="" />
-        </a>
-      </div>
-      {% endfor %}
+    {% for x in genre_list %}
+    <div class="royalty">
+      <a href="{% url 'genre_playlist' %}">
+        {% csrf_token %}
+        <div style="cursor: pointer;" onclick="myFunction(this.innerHTML)">
+          {{x.name}}
+        </div>
+        <img src="{{x.icons.0.url}}" alt="" />
+      </a>
     </div>
-  </body>
-  <script type="text/javascript">
-    function myFunction(genre) {
-      console.log(genre);
-      $.ajax({
-        type: "POST",
-        headers: {
-          "X-CSRFToken": document.querySelector('[name="csrfmiddlewaretoken"]')
-            .value,
-        },
-        data: {'cat':genre},
-      });
-    }
-  </script>
-</html>
+    {% endfor %}
+  </div>
+</body>
+<script type="text/javascript">
+  function myFunction(genre) {
+    console.log(genre);
+    $.ajax({
+      type: "POST",
+      headers: {
+        "X-CSRFToken": document.querySelector('[name="csrfmiddlewaretoken"]')
+          .value,
+      },
+      data: { cat: genre },
+    });
+  }
+</script>
+
 {% endblock content %}

@@ -1,84 +1,94 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <nav class="flex items-center p-3 flex-wrap">
   <a href="{% url 'home'%}" class="p-2 mr-4 inline-flex items-center">
-        <img class="h-12" src="{% static 'pages/images/logo.png'%}"/>
-        <span class="ml-4 text-xl text-white uppercase tracking-wide"
-          >Oni Music</span
-        >
+    <img class="h-12" src="{% static 'pages/images/logo.png'%}" />
+    <span class="ml-4 text-xl text-white uppercase tracking-wide"
+      >Oni Music</span
+    >
+  </a>
+  <button
+    class="text-white inline-flex p-3 hover:bg-gray-900 rounded lg:hidden ml-auto hover:text-white outline-none nav-toggler"
+    data-target="#navigation"
+  >
+    <svg
+      class="w-10 h-10"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+        clip-rule="evenodd"
+      ></path>
+    </svg>
+  </button>
+  <div
+    class="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto"
+    id="navigation"
+  >
+    <div
+      class="text-lg lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto"
+    >
+      <a
+        href="{% url 'home'%}"
+        class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
+      >
+        <span>Home</span>
       </a>
-      <button
-        class="text-white inline-flex p-3 hover:bg-gray-900 rounded lg:hidden ml-auto hover:text-white outline-none nav-toggler"
-        data-target="#navigation"
+      <a
+        href="{% url 'free_music'%}"
+        class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
       >
-      <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-      </button>
-      <div
-        class="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto"
-        id="navigation"
+        <span>Free Music</span>
+      </a>
+
+      <a
+        href="{% url 'genre'%}"
+        class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
       >
-        <div
-          class="text-lg lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto"
-        >
-          <a
-              href="{% url 'home'%}"
-            class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
-          >
-            <span>Home</span>
-          </a>
-          <a
-              href="{% url 'free_music'%}"
-            class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
-          >
-            <span>Free Music</span>
-          </a>
+        <span>Explore</span>
+      </a>
+      <a
+        href="{% url 'about' %}"
+        class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
+      >
+        <span>About</span>
+      </a>
+      {% if request.user.is_authenticated %}
+      <a
+        href="{% url 'logout' %}"
+        class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
+      >
+        <span>Logout</span>
+      </a>
+      <a class="p-2" href="{% url 'user_profile' %}"
+        ><img class="rounded-full w-16" src="{{user.profile.photo.url}}" alt=""
+      /></a>
 
-          <a
-              href="{% url 'genre'%}"
-            class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
-          >
-            <span>Explore</span>
-          </a>
-          <a
-              href="{% url 'about' %}"
-            class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
-          >
-            <span>About</span>
-          </a>
-          {% if request.user.is_authenticated %}
+      {% else %}
+      <a
+        href="{% url 'login' %}"
+        class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
+      >
+        <span>Login</span>
+      </a>
 
-              <span class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center"
- >Hello, {{request.user.first_name}}</span>
-              <a
-                  href="{% url 'logout' %}"
-                class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
-              >
-                <span>Logout</span>
-              </a>
-          {% else %}
-              <a
-                  href="{% url 'login' %}"
-                class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
-              >
-                <span>Login</span>
-              </a>
-
-
-          {% endif %}
-
-        </div>
-      </div>
+      {% endif %}
+    </div>
+  </div>
 </nav>
 <script>
-$(document).ready(function () {
-  $(".nav-toggler").each(function (_, navToggler) {
-    var target = $(navToggler).data("target");
-    $(navToggler).on("click", function () {
-      $(target).animate({
-        height: "toggle",
+  $(document).ready(function () {
+    $(".nav-toggler").each(function (_, navToggler) {
+      var target = $(navToggler).data("target");
+      $(navToggler).on("click", function () {
+        $(target).animate({
+          height: "toggle",
+        });
       });
     });
   });
-});</script>
-
+</script>

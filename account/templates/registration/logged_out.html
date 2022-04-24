@@ -1,8 +1,14 @@
 {% extends "base.html" %} {% block content %} {% load static %}
 <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
+<div class="flex-container  h-screen">
+    <div  style='padding:2em' class="form bg-white ">
 <h1>Logged out</h1>
 <p>
+
   You have been successfully logged out. You can
   <a href="{% url 'login' %}" style="color: black; font-weight: 600">log in again</a>.
 </p>
+</div >
+
+</div>
 {% endblock %}

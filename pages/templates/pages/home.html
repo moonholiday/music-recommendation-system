@@ -1,54 +1,46 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- <script src="https://kit.fontawesome.com/351e8914ed.js" crossorigin="anonymous"></script> -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-    <div class="hero">
-      <p>Welcome to <span class="text-primary colored">Oni Music</span></p>
+
+<div class="hero">
+  <p>Welcome to <span class="text-blue-500">Oni Music</span></p>
+</div>
+<div class="flex-container">
+  <div>
+    <div class="icon">
+      <img src="{% static 'pages/images/music.png'%}" alt="" />
     </div>
-    <div class="flex-container">
-      <div>
-        <div class="icon">
-          <i style="height: 60px;" class="fa-solid fa-music"></i>
-        </div>
-        Find Recommendation
-        <div class="icon">
-          <a class="btn btn-primary" href="{% url 'discover' %}">Try out</a>
-        </div>
-      </div>
-      <div>
-        <div class="icon">
-          <i style="height: 60px;" class="fa-solid fa-download"></i>
-        </div>
-        Royalty Free Music
-        <div class="icon">
-          <a class="btn btn-primary" href="{% url 'free_music' %}">Try out</a>
-        </div>
-      </div>
+    Find Recommendation
+    <div class="icon">
+      <a
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+        href="{% url 'discover' %}"
+        >Try out</a
+      >
     </div>
-    <div><p class="hero">Custom Playlist</p></div>
-    <div class="container">
-      <iframe 
-        src="https://open.spotify.com/embed/playlist/6fIVkafVqvn6hcp2aKjwb0?utm_source=generator&theme=0"
-        width="100%"
-        height="500"
-        frameborder="0"
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      ></iframe>
+  </div>
+  <div>
+    <div class="icon">
+      <img src="{% static 'pages/images/download.png'%}" alt="" />
     </div>
-  </body>
-</html>
+    Royalty Free Music
+    <div class="icon">
+      <a
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+        href="{% url 'free_music' %}"
+        >Try out</a
+      >
+    </div>
+  </div>
+</div>
+<div><p class="hero">Custom Playlist</p></div>
+<div class="container">
+  <iframe
+    src="https://open.spotify.com/embed/playlist/6fIVkafVqvn6hcp2aKjwb0?utm_source=generator&theme=0"
+    width="100%"
+    height="500"
+    frameborder="0"
+    allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+  ></iframe>
+</div>
 
 {% endblock content %}

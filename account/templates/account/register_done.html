@@ -1,18 +1,13 @@
-{% extends "base.html" %}
-{% block content %}
-{% load static %}
+{% extends "base.html" %} {% block content %} {% load static %}
 
-<link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-  crossorigin="anonymous"
-/>
-<link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
-<div class="container h-screen">
-  <h1>Welcome {{ new_user.first_name }}!</h1>
-  <p>Your account has been successfully created. Now you can <a
- href="{% url "login" %}">log in</a>.</p>
+<div class="flex-container h-screen">
+  <div style="padding: 2em;" class="form bg-white">
+    <h1>Welcome {{ new_user.first_name }}!</h1>
+    <p>
+      Your account has been successfully created. Now you can
+      <a href="{% url 'login' %}">log in</a>.
+    </p>
+  </div>
 </div>
 
 {% endblock %}
