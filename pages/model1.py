@@ -15,8 +15,8 @@ client_secret="a1e9ff23036a4444abcf6067fd63c2ca"
 
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
 
-data = pd.read_csv('pages\data.csv')
-genre_data = pd.read_csv('pages\data_by_genres.csv')
+data = pd.read_csv('pages/data.csv')
+genre_data = pd.read_csv('pages/data_by_genres.csv')
 
 song_cluster_pipeline = Pipeline([('scaler', StandardScaler()),
                                   ('kmeans', KMeans(n_clusters=20,
