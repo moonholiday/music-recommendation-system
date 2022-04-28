@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div class="flex-container">
   <div class="mt-10 text-2xl">Explore Genres</div>
 </div>
@@ -9,9 +10,7 @@
     <div class="royalty">
       <a href="{% url 'genre_playlist' %}">
         {% csrf_token %}
-        <div style="cursor: pointer;" onclick="myFunction(this.innerHTML)">
-          {{x.name}}
-        </div>
+        <div id='nice' onclick="myFunction(this.innerHTML)" style="cursor: pointer;">{{x.name}}</div>
         <img src="{{x.icons.0.url}}" alt="" />
       </a>
     </div>
@@ -22,12 +21,11 @@
   function myFunction(genre) {
     console.log(genre);
     $.ajax({
-      type: "POST",
-      headers: {
-        "X-CSRFToken": document.querySelector('[name="csrfmiddlewaretoken"]')
-          .value,
-      },
-      data: { cat: genre },
+        url:"{% url 'genre_playlist'%}",
+        data:{
+            x:genre
+        },
+        datatype:'json',
     });
   }
 </script>

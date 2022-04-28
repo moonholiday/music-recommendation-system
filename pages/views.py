@@ -13,6 +13,8 @@ import re
 from pages.model1 import *
 from .forms import AudioForm
 from django.contrib.auth.decorators import login_required
+from operator import is_not
+from functools import partial
 
 client_id="b4dad3bdf5144e6f8f408ec2f6f278a3"
 client_secret="a1e9ff23036a4444abcf6067fd63c2ca"
@@ -42,17 +44,26 @@ def GenrePageView(request):
     # print(test1)
 
 def genre_playlist(request):
+    x = request.GET.get('x')
+    li = ''
+    if x is not None:
+        li += list(x)
 
-    category_id = request.POST.get('cat')
-    print(category_id)
 
+
+    # r = slugify(x)
+    # f = re.sub('\-', '', r)
+    # print(f)
     sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
     playlist = sp.category_playlists(category_id='rock')
     pl_list = playlist['playlists']['items']
     context = {'pl_list': pl_list}
     # print(playlist)
-
     return render(request, 'genre_playlist.html', context=context)
+
+
+
+
 
 def discover(request):
     query = request.POST.get('q')

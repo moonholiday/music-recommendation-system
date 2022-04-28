@@ -38,3 +38,9 @@ class Category(models.Model):
         if self.slug is None:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+
+class Favourite(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    song = models.ForeignKey(Song, on_delete=models.CASCADE)
+    is_fav = models.BooleanField(default=False)
