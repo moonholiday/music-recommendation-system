@@ -11,6 +11,8 @@ import pickle
 from slugify import slugify
 import re
 from pages.model1 import *
+from .forms import AudioForm
+from django.contrib.auth.decorators import login_required
 
 client_id="b4dad3bdf5144e6f8f408ec2f6f278a3"
 client_secret="a1e9ff23036a4444abcf6067fd63c2ca"
@@ -103,3 +105,15 @@ def single_category(request, slug):
     }
 
     return render(request, 'single_category.html', context=context)
+
+@login_required
+def add_music(request):
+
+    if request.method == 'POST':
+        form = AudioForm(request.POST, request.FILES or None)
+
+        if form.is_valid():
+            form.save()
+    else:
+        form = AudioForm()
+    return render(request, 'add_music.html', {'form':form})

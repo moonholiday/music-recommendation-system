@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from .helpers import get_audio_length
 from .validators import validate_is_audio
+from django.contrib.auth.models import User
 
 class Song(models.Model):
     name=models.CharField(max_length=200)
@@ -10,6 +11,7 @@ class Song(models.Model):
     artist=models.CharField(max_length=200)
     time_length=models.DecimalField(null=True, max_digits=20, decimal_places=2,blank=True)
     song_file=models.FileField(validators=[validate_is_audio])
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True ,blank=True)
 
     def __str__(self):
         return self.name
