@@ -9,9 +9,75 @@
         This is User saved songs.
       </p>
     </div>
-    {% for song in new %}
-      <h1>{{song.name|truncatechars:50}}</h1>
-    {% endfor %}
+
+  <div style='padding:2em' class='flex-container'>
+    <table class="table table-hover" style="background-color: white;">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Cover Art</th>
+          <th scope="col">Title</th>
+          <th scope="col">Artist</th>
+          <th scope="col">Song</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if new %}
+        <div class="text-2xl">
+          Your Uploads
+        </div>
+        {% for song in new %}
+        <tr class="all" style="background-color: white;">
+          <th scope="row">{{forloop.counter}}</th>
+          <td class="pic"><img class="rounded" src="{{ song.song_img.url}}" width=80></td>
+          <td>{{song.name}} <br>
+
+          </td>
+
+          <td>{{song.artist}}</td>
+
+          <td>
+            <audio controls controlsList = "noplaybackrate">
+              <source src="{{ song.song_file.url }}" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            <form action="{% url 'delete_music' song.id %}" method="post">
+            {% csrf_token %}
+            <input class="btn btn-danger mx-2" value="remove" type="button" data-toggle="modal" data-target="#exampleModal" name={{song.id}}>
+
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> {{user.username}} are you sure?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Song {{song.name}} will be deleted
+                  </div>
+                  <div class="modal-footer">
+
+                    <button type="submit" class="btn btn-danger">Yes, I am sure</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+      </tbody>
+    </table>
+
+
+  </div>
 
 
 </div>

@@ -14,16 +14,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
-<div class="lg:container lg:mx-auto h-screen">
-  <div class="flex-container text-2xl m-6">
+<div class="lg:container lg:mx-auto h-screen p-2">
+  <div class="flex-container text-2xl m-6 ">
     {{category.name}}
   </div>
   <div class="flex flex-column justify-center m-4">
     {% for song in songs %}
-    <div class="ml-4 mr-4 bg-white flex flex-row items-center">
-      <img class="w-36 mr-4" src="{{song.song_img.url}}" alt="" />
+    <div class="ml-4 mr-4 bg-white p-4 flex flex-row items-center">
+      <img class="mr-4" src="{{song.song_img.url}}" style="max-width:100px;min-width:100px" alt="" />
 
-      <audio class="audio mr-4" style="width: 100%;" controls="" name="media">
+      <audio class="audio mr-4" style="width: 100%;" controls="" controlsList="noplaybackrate" name="media">
         <source onclick="myFunction(this.innerHTML)" src="{{song.song_file.url}}" />
       </audio>
       <a href="{% url 'favourite_add' song.id %}" class='btn btn-outline-primary'>favourite</a>

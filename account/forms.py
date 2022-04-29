@@ -1,10 +1,12 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
+from .validators import validate_email
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
+    email = forms.EmailField(validators = [validate_email])
 
     class Meta:
         model = User

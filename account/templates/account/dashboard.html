@@ -8,7 +8,9 @@
   <div class="flex-container">
     <div style='padding:2em' class="bg-slate-100">
       <h1 class='text-2xl mb-4'>User Profile Page</h1>
+      {% if user.profile.photo %}
       <img class="m-2 rounded-full w-32" src="{{user.profile.photo.url}}" alt="">
+      {%endif%}
       <p>Hi, {{user.profile.user.username}}</p>
       <p>
         This is User Profile. You can

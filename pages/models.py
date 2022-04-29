@@ -21,7 +21,7 @@ class Song(models.Model):
     song_file=models.FileField(validators=[validate_is_audio])
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True ,blank=True)
     favourites = models.ManyToManyField(User, related_name='favourite', default=None, blank=True)
-    status = models.CharField(max_length=10, choices=options, default='draft')
+    status = models.CharField(max_length=10, choices=options, default='published')
 
     objects = models.Manager()
     newmanager = NewManager()
