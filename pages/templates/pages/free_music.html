@@ -28,13 +28,15 @@
 
     <div class="royalty">
       <a href="{% url 'single_category' category.slug %}">
-        <img class="icon" src="{{ category.category_img.url }}" />
         {{ category.name }}
+        <img class="w-36 p-2" src="{{ category.category_img.url }}" />
+
       </a>
     </div>
 
     {% endfor %} {% endif %}
   </div>
+
 </div>
 
 {% endblock content %}

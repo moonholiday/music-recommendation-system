@@ -45,9 +45,15 @@ def GenrePageView(request):
 
 def genre_playlist(request):
     x = request.GET.get('x')
-    li = ''
+    li = []
+
     if x is not None:
         li += list(x)
+    res = [i for i in li if i]
+    for i, val in enumerate(res):
+        if val is None:
+            del res[i]
+    print(res)
 
 
 
@@ -124,7 +130,18 @@ def add_music(request):
         form = AudioForm(request.POST, request.FILES or None)
 
         if form.is_valid():
-            form.save()
+            usr = request.user
+            name = form.cleaned_data['name']
+            name1 = form.cleaned_data['category']
+            name2 = form.cleaned_data['song_img']
+            name3 = form.cleaned_data['artist']
+            name4 = form.cleaned_data['song_file']
+            Song(user=usr,name=name,category=name1,song_img=name2,artist=name3,song_file=name4).save()
     else:
         form = AudioForm()
     return render(request, 'add_music.html', {'form':form})
+
+def delete_music(request, pk):
+    song = Song.objects.get(id=pk)
+    song.delete()
+    return redirect('dashboard')

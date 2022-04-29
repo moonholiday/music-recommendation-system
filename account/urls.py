@@ -19,6 +19,8 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('edit/', views.edit, name='edit'),
     path('dashboard/', views.dashboard, name='dashboard'),
+    path('fav/<int:id>/', views.favourite_add, name='favourite_add'),
+    path('favourites/', views.favourite_list, name='favourite_list'),
 ]
 
 if settings.DEBUG:

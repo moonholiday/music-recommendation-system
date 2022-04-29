@@ -26,26 +26,11 @@
       <audio class="audio mr-4" style="width: 100%;" controls="" name="media">
         <source onclick="myFunction(this.innerHTML)" src="{{song.song_file.url}}" />
       </audio>
-      <form method="post">
-        {% csrf_token %}
-        {% if is_favourite %}
-        <span class="d-flex align-items-center mt-2 ml-2">
-          <!-- <i class="heart fa fa-heart my-auto"></i> -->
-          <button type="submit" name="rm-fav" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 border border-blue-700 rounded m-3">Unpin</button>
-        </span>
-        {% else %}
-        <span class="d-flex align-items-center mt-2 ml-2">
-          <!-- <i class="heart fa fa-heart my-auto"></i> -->
-          <button type="submit" name="add-fav" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 border border-blue-700 rounded m-3">Pin</button>
+      <a href="{% url 'favourite_add' song.id %}" class='btn btn-outline-primary'>favourite</a>
 
-          <!-- <input type="submit" id="favbtn" class="btn btn-primary" name="add-fav" value="Add to Favourites"> -->
-        </span>
-
-        {% endif %}
-      </form>
     </div>
     <div class="block ml-4 mb-4 text-lg">
-      {{song.name}}
+      <p>{{song.name}} By {{song.artist}}</p>
 
     </div>
 

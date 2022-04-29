@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
@@ -29,16 +29,15 @@ def register(request):
 
 @login_required(login_url='login')
 def dashboard(request):
-    songs = Song.objects.filter(favourite__user=request.user, favourite__is_fav=True).distinct()
-    if request.method == "POST":
-        song_id = list(request.POST.keys())[1]
-        favourite_song = Favourite.objects.filter(user=request.user, song__id=song_id, is_fav=True)
-        favourite_song.delete()
-        messages.success(request, "Removed from favourite!")
-    context = {'songs': songs, 'section': dashboard}
+    if request.user.is_authenticated:
+        user = request.user
+        usersong = Song.objects.filter(user=user)
+        print("user :"+str(usersong))
+        context={
+            'songs':usersong
+        }
 
     return render(request,'account/dashboard.html', context=context)
-
 
 @login_required
 def edit(request):
@@ -54,3 +53,17 @@ def edit(request):
         profile_form = ProfileEditForm(instance=request.user.profile)
 
     return render(request, 'account/edit.html', {'user_form': user_form, 'profile_form': profile_form})
+
+@login_required
+def favourite_list(request):
+    new = Song.newmanager.filter(favourites=request.user)
+    return render(request, 'account/favourites.html', {'new': new})
+
+@login_required
+def favourite_add(request, id):
+    song = get_object_or_404(Song, id=id)
+    if song.favourites.filter(id=request.user.id).exists():
+        song.favourites.remove(request.user)
+    else:
+        song.favourites.add(request.user)
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
