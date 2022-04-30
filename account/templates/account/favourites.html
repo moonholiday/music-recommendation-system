@@ -43,31 +43,8 @@
             </audio>
           </td>
           <td>
-            <form action="{% url 'delete_music' song.id %}" method="post">
-            {% csrf_token %}
-            <input class="btn btn-danger mx-2" value="remove" type="button" data-toggle="modal" data-target="#exampleModal" name={{song.id}}>
-
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"> {{user.username}} are you sure?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Song {{song.name}} will be deleted
-                  </div>
-                  <div class="modal-footer">
-
-                    <button type="submit" class="btn btn-danger">Yes, I am sure</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
+            <div id="favourite-section"><a href="{% url 'favourite_add' song.id %}"
+                    class="btn btn-outline-primary">Remove</a></div>
 
           </td>
         </tr>

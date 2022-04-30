@@ -18,8 +18,6 @@ from functools import partial
 # from selenium import webdriver
 # from webdriver_manager.chrome import ChromeDriverManager
 
-
-
 client_id="b4dad3bdf5144e6f8f408ec2f6f278a3"
 client_secret="a1e9ff23036a4444abcf6067fd63c2ca"
 
@@ -34,24 +32,26 @@ class FaqPageView(TemplateView):
 
 def GenrePageView(request):
     x = request.POST.get('x')
-    print(x)
+    # print(x)
     sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
     genres = sp.categories(country='US', locale=None, limit=10, offset=0)
     # print(genres)
     # print(genre1)
     if x is None:
         genre_list = genres['categories']['items']
-        x = []
+
         # print(genre_list)
         # if request.GET.get('x') is not None:
         context = {'genre_list': genre_list}
         return render(request, 'genre.html', context = context)
 
     if x is not None:
-        playlist = sp.category_playlists(category_id=x)
+        r = slugify(x)
+        f = re.sub('-', '', r)
+        playlist = sp.category_playlists(category_id=f)
         pl_list = playlist['playlists']['items']
         context = {'pl_list': pl_list}
-        print(pl_list)
+        # print(pl_list)
         return render(request, 'genre.html', context=context)
     # test = sp.audio_features('68Dni7IE4VyPkTOH9mRWHr')
     # test1 = test
@@ -135,7 +135,7 @@ def discover(request):
         recommendations = recommend_songs([{'name': query}])
 
         res_list = recommendations
-        print(res_list)
+        # print(res_list)
     #
         return render(request, 'discover.html', {'res_list': res_list})
     else:
@@ -159,18 +159,19 @@ def single_category(request, slug):
     songs = Song.objects.filter(category=category)
     song_list = list(Song.objects.all().values())
 
-    fav = bool
-    if song_list.favourites.filter(id=request.user.id).exists():
-        fav =True
+    # song = get_object_or_404(Song)
+    # fav = bool
+    # if song.favourites.filter(id=request.user.id).exists():
+    #     fav = True
 
     context = {
         'category': category,
         'songs': songs,
         'song_list': song_list,
-        'fav': fav
     }
 
     return render(request, 'single_category.html', context=context)
+
 
 @login_required(login_url='login')
 def add_music(request):

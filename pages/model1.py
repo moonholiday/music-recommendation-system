@@ -30,7 +30,7 @@ song_cluster_pipeline.fit(X)
 pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
 song_embedding = pca_pipeline.fit_transform(X)
 
-print(song_embedding)
+# print(song_embedding)
 
 def find_song(name):
     song_data = defaultdict()
