@@ -17,16 +17,8 @@
     {% endfor %}
   </div>
 </body>
-<script type="text/javascript">
-  function myFunction(genre) {
-    console.log(genre);
-        $.ajax({
-            data:{
-                'x':genre
-            },
-            datatype:'json',
-        });
-  }
+<script type="text/javascript" src="{% static 'pages/app.js'%}">
+
 </script>
 
 {% endblock content %}

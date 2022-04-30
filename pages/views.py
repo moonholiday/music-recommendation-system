@@ -15,6 +15,7 @@ from .forms import AudioForm
 from django.contrib.auth.decorators import login_required
 from operator import is_not
 from functools import partial
+from selenium import webdriver
 
 client_id="b4dad3bdf5144e6f8f408ec2f6f278a3"
 client_secret="a1e9ff23036a4444abcf6067fd63c2ca"
@@ -34,21 +35,76 @@ def GenrePageView(request):
     # print(genres)
     # print(genre1)
     genre_list = genres['categories']['items']
-
+    x = []
     # print(genre_list)
+    # if request.GET.get('x') is not None:
 
-    x = request.GET.get('x')
-    print(x)
+
 
     context = {'genre_list': genre_list}
     return render(request, 'genre.html', context = context)
     # test = sp.audio_features('68Dni7IE4VyPkTOH9mRWHr')
     # test1 = test
     # print(test1)
+class LocalStorage:
+
+    def __init__(self, driver) :
+        self.driver = driver
+
+    def __len__(self):
+        return self.driver.execute_script("return window.localStorage.length;")
+
+    def items(self) :
+        return self.driver.execute_script( \
+            "var ls = window.localStorage, items = {}; " \
+            "for (var i = 0, k; i < ls.length; ++i) " \
+            "  items[k = ls.key(i)] = ls.getItem(k); " \
+            "return items; ")
+
+    def keys(self) :
+        return self.driver.execute_script( \
+            "var ls = window.localStorage, keys = []; " \
+            "for (var i = 0; i < ls.length; ++i) " \
+            "  keys[i] = ls.key(i); " \
+            "return keys; ")
+
+    def get(self, key):
+        return self.driver.execute_script("return window.localStorage.getItem(arguments[0]);", key)
+
+    def set(self, key, value):
+        self.driver.execute_script("window.localStorage.setItem(arguments[0], arguments[1]);", key, value)
+
+    def has(self, key):
+        return key in self.keys()
+
+    def remove(self, key):
+        self.driver.execute_script("window.localStorage.removeItem(arguments[0]);", key)
+
+    def clear(self):
+        self.driver.execute_script("window.localStorage.clear();")
+
+    def __getitem__(self, key) :
+        value = self.get(key)
+        if value is None :
+          raise KeyError(key)
+        return value
+
+    def __setitem__(self, key, value):
+        self.set(key, value)
+
+    def __contains__(self, key):
+        return key in self.keys()
+
+    def __iter__(self):
+        return self.items().__iter__()
+
+    def __repr__(self):
+        return self.items().__str__()
 
 def genre_playlist(request):
+    storage = LocalStorage(driver)
 
-
+    print(storage.get("genre"))
     # r = slugify(x)
     # f = re.sub('\-', '', r)
     # print(f)
