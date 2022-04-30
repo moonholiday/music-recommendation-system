@@ -26,7 +26,15 @@
       <audio class="audio mr-4" style="width: 100%;" controls="" controlsList="noplaybackrate" name="media">
         <source onclick="myFunction(this.innerHTML)" src="{{song.song_file.url}}" />
       </audio>
-      <a href="{% url 'favourite_add' song.id %}" class='btn btn-outline-primary'>favourite</a>
+      {% if request.user.is_authenticated %}
+      {% if fav %}
+      <a href="{% url 'favourite_list' song.id %}" class='btn btn-outline-primary'>Remove favourite</a>
+      {% else %}
+      <a href="{% url 'favourite_add' song.id %}" class='btn btn-outline-primary'>Remove favourite</a>
+      {% else %}
+      <a href="{% url 'register'  %}" class='btn btn-outline-primary'>favourite</a>
+      {% endif %}
+      {%endif%}
 
     </div>
     <div class="block ml-4 mb-4 text-lg">
@@ -37,7 +45,6 @@
     {% endfor %}
   </div>
 </div>
-<script src="https://unpkg.com/wavesurfer.js"></script>
 
 <script type="text/javascript">
   // Get all <audio> elements.

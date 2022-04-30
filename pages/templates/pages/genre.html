@@ -20,13 +20,12 @@
 <script type="text/javascript">
   function myFunction(genre) {
     console.log(genre);
-    $.ajax({
-        url:"{% url 'genre_playlist'%}",
-        data:{
-            x:genre
-        },
-        datatype:'json',
-    });
+        $.ajax({
+            data:{
+                'x':genre
+            },
+            datatype:'json',
+        });
   }
 </script>
 

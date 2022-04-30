@@ -2,25 +2,6 @@
 
 <div class="hero"><p>Free Music page</p></div>
 
-<div class="flex-container">
-  <div id="container flex justify-center items-center px-4 sm:px-6 lg:px-8">
-    <div class="relative">
-      <form method="post">
-        {% csrf_token %}
-        <input
-          type="search"
-          id="search"
-          class="h-12 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"
-          placeholder="Search.."
-          name="q"
-        />
-        <button id="search-this" type="submit" class="absolute top-4 right-3">
-          <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-</div>
 <div class="md:container md:mx-auto">
   <div class="flex-container">
     <!-- Genre List -->

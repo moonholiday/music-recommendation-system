@@ -37,6 +37,9 @@ def GenrePageView(request):
 
     # print(genre_list)
 
+    x = request.GET.get('x')
+    print(x)
+
     context = {'genre_list': genre_list}
     return render(request, 'genre.html', context = context)
     # test = sp.audio_features('68Dni7IE4VyPkTOH9mRWHr')
@@ -44,17 +47,6 @@ def GenrePageView(request):
     # print(test1)
 
 def genre_playlist(request):
-    x = request.GET.get('x')
-    li = []
-
-    if x is not None:
-        li += list(x)
-    res = [i for i in li if i]
-    for i, val in enumerate(res):
-        if val is None:
-            del res[i]
-    print(res)
-
 
 
     # r = slugify(x)
@@ -66,9 +58,6 @@ def genre_playlist(request):
     context = {'pl_list': pl_list}
     # print(playlist)
     return render(request, 'genre_playlist.html', context=context)
-
-
-
 
 
 def discover(request):
@@ -115,15 +104,20 @@ def single_category(request, slug):
     songs = Song.objects.filter(category=category)
     song_list = list(Song.objects.all().values())
 
+    fav = bool
+    if song_list.favourites.filter(id=request.user.id).exists():
+        fav =True
+
     context = {
         'category': category,
         'songs': songs,
         'song_list': song_list,
+        'fav': fav
     }
 
     return render(request, 'single_category.html', context=context)
 
-@login_required
+@login_required(login_url='login')
 def add_music(request):
 
     if request.method == 'POST':
@@ -141,6 +135,20 @@ def add_music(request):
         form = AudioForm()
     return render(request, 'add_music.html', {'form':form})
 
+
+@login_required(login_url='login')
+def update_music(request, pk):
+    song = Song.objects.get(id=pk)
+    form = AudioForm(instance=song)
+    if request.method == 'POST':
+        form = AudioForm(request.POST, instance=song)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    return render(request, 'add_music.html', {'form':form})
+
+
+@login_required(login_url='login')
 def delete_music(request, pk):
     song = Song.objects.get(id=pk)
     song.delete()

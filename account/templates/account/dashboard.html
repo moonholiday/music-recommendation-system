@@ -30,7 +30,7 @@
           <th scope="col">Title</th>
           <th scope="col">Artist</th>
           <th scope="col">Song</th>
-          <th scope="col">Delete</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -54,9 +54,14 @@
             </audio>
           </td>
           <td>
+            <form action="{% url 'update_music' song.id %}" method="post">
+              {% csrf_token %}
+              <input class="btn btn-primary" type="submit" value="update" name="{{song.id}}">
+            </form>
+
             <form action="{% url 'delete_music' song.id %}" method="post">
             {% csrf_token %}
-            <input class="btn btn-danger mx-2" value="remove" type="button" data-toggle="modal" data-target="#exampleModal" name={{song.id}}>
+            <input class="btn btn-danger " value="remove" type="button" data-toggle="modal" data-target="#exampleModal" name={{song.id}}>
 
 
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -91,5 +96,25 @@
   </div>
 </div>
 
+<script type="text/javascript">
+  // Get all <audio> elements.
+  const audios = document.querySelectorAll("audio");
+
+  // Pause all <audio> elements except for the one that started playing.
+  function pauseOtherAudios({
+    target
+  }) {
+    for (const audio of audios) {
+      if (audio !== target) {
+        audio.pause();
+      }
+    }
+  }
+
+  // Listen for the 'play' event on all the <audio> elements.
+  for (const audio of audios) {
+    audio.addEventListener("play", pauseOtherAudios);
+  }
+</script>
 
 {% endblock %}
