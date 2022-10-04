@@ -19,5 +19,4 @@ pipenv install python-dotenv
 python manage.py runserver
 ```
 
-Creative Commons CC BY-SA 3.0
-https://creativecommons.org/licenses/by-sa/3.0/
+## Technologies Used

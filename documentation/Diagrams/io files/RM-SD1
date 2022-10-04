@@ -1,0 +1,121 @@
+<mxfile host="app.diagrams.net" modified="2022-04-27T08:31:37.443Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="JbF2bMBSQOVEKGYlKrqv" version="17.4.6" type="github">
+  <diagram id="d8D8ElYG9BNlh30OwiBo" name="Page-1">
+    <mxGraphModel dx="1955" dy="875" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-41" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700.08" y="520" as="sourcePoint" />
+            <mxPoint x="699.58" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-2" value="" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="86" y="120" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-3" value="System" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-4" value="API" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-5" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="101" y="520" as="sourcePoint" />
+            <mxPoint x="100.5" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-6" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="520" as="sourcePoint" />
+            <mxPoint x="299.5" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-7" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="295" y="180" width="10" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-8" value="Search for a song" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1">
+          <mxGeometry x="-0.0526" width="80" relative="1" as="geometry">
+            <mxPoint x="100" y="220" as="sourcePoint" />
+            <mxPoint x="290" y="220" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="200" y="220" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-9" value="Pass the value" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="305" y="240" as="sourcePoint" />
+            <mxPoint x="495" y="240" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-10" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;startArrow=none;" edge="1" parent="1" source="Hwl3PA9OzlWQVy6-5hlZ-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="499.5" y="671.5999755859375" as="sourcePoint" />
+            <mxPoint x="499.5" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-11" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="495" y="180" width="10" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-12" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1" target="Hwl3PA9OzlWQVy6-5hlZ-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="520" as="sourcePoint" />
+            <mxPoint x="499.5" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-22" value="User" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="81" y="100" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-28" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;startArrow=none;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="509.5000000000002" y="190" as="sourcePoint" />
+            <mxPoint x="509.5000000000002" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-31" value="Recommendation Model" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-32" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="695" y="180" width="10" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-33" value="Get audio features of the song" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="505" y="260" as="sourcePoint" />
+            <mxPoint x="695" y="260" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-38" value="Return classified song track" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;exitX=0.04;exitY=0.464;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Hwl3PA9OzlWQVy6-5hlZ-32">
+          <mxGeometry x="0.1053" width="80" relative="1" as="geometry">
+            <mxPoint x="690" y="320" as="sourcePoint" />
+            <mxPoint x="505" y="320" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-40" value="Return N nearest song with &lt;br&gt;similar audio features" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;exitX=0.083;exitY=0.318;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry x="0.0043" y="-10" width="80" relative="1" as="geometry">
+            <mxPoint x="495.8300000000004" y="360.00000000000006" as="sourcePoint" />
+            <mxPoint x="305" y="360.08" as="targetPoint" />
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="400" y="360.08" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hwl3PA9OzlWQVy6-5hlZ-42" value="Render the recommendations" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;exitX=0.083;exitY=0.318;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry x="0.0043" y="-10" width="80" relative="1" as="geometry">
+            <mxPoint x="295.00000000000034" y="400" as="sourcePoint" />
+            <mxPoint x="104.16999999999999" y="400.0799999999999" as="targetPoint" />
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="199.17" y="400.08" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
