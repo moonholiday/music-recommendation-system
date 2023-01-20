@@ -10,6 +10,12 @@ fontawesomefree = "*"
 python-dotenv = "*"
 Django = "==3.2"
 Pillow = "*"
+django-tailwind = "*"
+mutagen = "*"
+pandas = "*"
+numpy = "*"
+scikit-learn = "*"
+slugify = "*"
 
 [dev-packages]
 
