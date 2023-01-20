@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6fd62157080e3936b0659e6bd97ea86664459650fc0f480f38de684b3a2aad6f"
+            "sha256": "26237fdc329b64fbda9ffaaf4c089ecb0648d76f63ba4fa6f42dd3ca0345d4bb"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -136,11 +136,11 @@
         },
         "django": {
             "hashes": [
-                "sha256:0604e84c4fb698a5e53e5857b5aea945b2f19a18f25f10b8748dbdf935788927",
-                "sha256:21f0f9643722675976004eb683c55d33c05486f94506672df3d6a141546f389d"
+                "sha256:4b214a05fe4c99476e99e2445c8b978c8369c18d4dea8e22ec412862715ad763",
+                "sha256:ff56ebd7ead0fd5dbe06fe157b0024a7aaea2e0593bb3785fb594cf94dad58ef"
             ],
             "index": "pypi",
-            "version": "==3.2"
+            "version": "==4.1.5"
         },
         "django-browser-reload": {
             "hashes": [
@@ -160,11 +160,11 @@
         },
         "django-tailwind": {
             "hashes": [
-                "sha256:3e80b7d2187dabc082f7bb08fb983f412cce0c120080a05cde060b1cb461bb16",
-                "sha256:51e67e3d8a9597b8b4dbbd82f8f3336ffc8e2e20bf5ef1bfa49dc832ae2248be"
+                "sha256:b0ea5f2e2e45b86f7165673291323e46200a91cfed99b80278272a49f034c7a4",
+                "sha256:ce47a28b466e2e427534ee5a8c6f2ee7f7ffb6bce83b55b7ec22be994b293b65"
             ],
             "index": "pypi",
-            "version": "==3.3.0"
+            "version": "==3.4.0"
         },
         "fontawesomefree": {
             "hashes": [

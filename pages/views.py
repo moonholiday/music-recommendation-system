@@ -34,8 +34,8 @@ def GenrePageView(request):
     x = request.POST.get('x')
     # print(x)
     sp = spotipy.Spotify(auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
-    genres = sp.categories(country='US', locale=None, limit=10, offset=0)
-    # print(genres)
+    genres = sp.categories(locale=None, limit=10, offset=0)
+    print(genres)
     # print(genre1)
     if x is None:
         genre_list = genres['categories']['items']

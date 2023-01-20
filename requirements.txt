@@ -1,5 +1,5 @@
 fontawesomefree
-django==3.2
+django
 pillow
 python-dotenv
 django-crispy-forms
