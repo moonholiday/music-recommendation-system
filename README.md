@@ -1,22 +1,67 @@
-# Oni Music 👹
 
-Oni music is a music recommendation system based on genre detection.
+# Music Recommendation System
 
-## Dev requirements
+A fully functional web-based music recommendation system that spits out recommendation based on the user input.
 
-Use the package manager [pip](https://pip.pypa..io/en/stable/)
+
+
+## Acknowledgements
+
+ - [Playlist2vec: Spotify Million Playlist Dataset](https://zenodo.org/record/5002584)
+ - [K Means](https://stanford.edu/~cpiech/cs221/handouts/kmeans.html)
+
+
+
+## API Reference
+
+#### Get access token from spotify
+
+```https
+  GET accounts.spotify.com/api/token
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. Your API key |
+
+#### Get resources
+
+```https
+  GET api.spotify.com/{version}/{resource_type}/{lookup_id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of item to fetch |
+
+
+#### Get resources
+
+```https
+  GET api.spotify.com/v1/search
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `query`      | `string` | **Required**. name of item to fetch |
+
+## Authors
+
+- [@moonholiday](https://www.github.com/Moonholiday)
+
+
+## Demo
+
+Insert gif or link to demo
+
+
+## Installation
+
+Install the project with pip
 
 ```bash
-pip install pipenv
-pipenv install django==3.2
-pipenv install pillow
-pipenv install python-dotenv
-```
-
-## Usage
-
-```
+python -v venv env
+pip install -r requirements.txt
 python manage.py runserver
 ```
-
-## Technologies Used
+    
