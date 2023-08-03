@@ -63,5 +63,6 @@ Install the project with pip
 python -m venv env
 pip install -r requirements.txt
 python manage.py runserver
+python manage.py tailwind start
 ```
     
