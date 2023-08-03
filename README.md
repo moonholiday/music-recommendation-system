@@ -60,7 +60,7 @@ A fully functional web-based music recommendation system that spits out recommen
 Install the project with pip
 
 ```bash
-python -v venv env
+python -m venv env
 pip install -r requirements.txt
 python manage.py runserver
 ```
