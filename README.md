@@ -60,7 +60,7 @@ Insert gif or link to demo
 Install the project with pip
 
 ```bash
-python -v venv env
+python -m venv env
 pip install -r requirements.txt
 python manage.py runserver
 ```
