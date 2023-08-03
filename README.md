@@ -52,7 +52,7 @@ A fully functional web-based music recommendation system that spits out recommen
 
 ## Demo
 
-Insert gif or link to demo
+![](https://github.com/Moonholiday/music-recommendation-system/blob/main/demo.gif)
 
 
 ## Installation
@@ -60,7 +60,7 @@ Insert gif or link to demo
 Install the project with pip
 
 ```bash
-python -m venv env
+python -v venv env
 pip install -r requirements.txt
 python manage.py runserver
 ```
