@@ -10,3 +10,5 @@ pandas
 numpy
 scikit-learn
 slugify
+django-reload-browser
+crispy-bootstrap4

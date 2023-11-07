@@ -10,31 +10,34 @@ from sklearn.preprocessing import StandardScaler
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
-client_id="b4dad3bdf5144e6f8f408ec2f6f278a3"
-client_secret="a1e9ff23036a4444abcf6067fd63c2ca"
+client_id = "b4dad3bdf5144e6f8f408ec2f6f278a3"
+client_secret = "a1e9ff23036a4444abcf6067fd63c2ca"
 
-sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
+sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
+    client_id=client_id, client_secret=client_secret))
 
 data = pd.read_csv('pages/data.csv')
 genre_data = pd.read_csv('pages/data_by_genres.csv')
 
 song_cluster_pipeline = Pipeline([('scaler', StandardScaler()),
-                                  ('kmeans', KMeans(n_clusters=20,
+                                  ('kmeans', KMeans(n_clusters=20, n_init='auto',
                                    verbose=False))
-                                 ], verbose=False)
+                                  ], verbose=False)
 
 X = data.select_dtypes(np.number)
 number_cols = list(X.columns)
 song_cluster_pipeline.fit(X)
 
-pca_pipeline = Pipeline([('scaler', StandardScaler()), ('PCA', PCA(n_components=2))])
+pca_pipeline = Pipeline([('scaler', StandardScaler()),
+                        ('PCA', PCA(n_components=2))])
 song_embedding = pca_pipeline.fit_transform(X)
 
 # print(song_embedding)
 
+
 def find_song(name):
     song_data = defaultdict()
-    results = sp.search(q= name, limit=1)
+    results = sp.search(q=name, limit=1)
     if results['tracks']['items'] == []:
         return None
 
@@ -52,16 +55,20 @@ def find_song(name):
 
     return pd.DataFrame(song_data)
 
+
 number_cols = ['valence', 'acousticness', 'danceability', 'duration_ms', 'energy', 'explicit',
- 'instrumentalness', 'key', 'liveness', 'loudness', 'mode', 'popularity', 'speechiness', 'tempo']
+               'instrumentalness', 'key', 'liveness', 'loudness', 'mode', 'popularity', 'speechiness', 'tempo']
+
 
 def get_song_data(song, spotify_data):
     try:
-        song_data = spotify_data[(spotify_data['name'] == song['name'])].iloc[0]
+        song_data = spotify_data[(
+            spotify_data['name'] == song['name'])].iloc[0]
         return song_data
 
     except IndexError:
         return find_song(song['name'])
+
 
 def get_mean_vector(song_list, spotify_data):
 
@@ -70,13 +77,15 @@ def get_mean_vector(song_list, spotify_data):
     for song in song_list:
         song_data = get_song_data(song, spotify_data)
         if song_data is None:
-            print('Warning: {} does not exist in Spotify or in database'.format(song['name']))
+            print('Warning: {} does not exist in Spotify or in database'.format(
+                song['name']))
             continue
         song_vector = song_data[number_cols].values
         song_vectors.append(song_vector)
 
     song_matrix = np.array(list(song_vectors))
     return np.mean(song_matrix, axis=0)
+
 
 def flatten_dict_list(dict_list):
     flattened_dict = defaultdict()
@@ -87,7 +96,8 @@ def flatten_dict_list(dict_list):
             flattened_dict[key].append(value)
     return flattened_dict
 
-def recommend_songs( song_list, n_songs=10):
+
+def recommend_songs(song_list, n_songs=10):
     spotify_data = data
     metadata_cols = ['name', 'id', 'artists']
     song_dict = flatten_dict_list(song_list)

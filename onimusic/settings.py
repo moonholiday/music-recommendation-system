@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     # user_defined
     'pages.apps.PagesConfig',
     'account.apps.AccountConfig',
-    'crispy_forms',
     'fontawesomefree',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,9 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'tailwind',
     'theme',
-    'django_browser_reload'
+    'django_browser_reload',
+    'crispy_bootstrap4'
 ]
 
 
@@ -89,12 +90,16 @@ WSGI_APPLICATION = 'onimusic.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'sqlite3.db',                      # Or path to database file if using sqlite3.
+        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',
+        # Or path to database file if using sqlite3.
+        'NAME': 'sqlite3.db',
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': '',
+        # Set to empty string for default. Not used with sqlite3.
+        'PORT': '',
     }
 }
 
