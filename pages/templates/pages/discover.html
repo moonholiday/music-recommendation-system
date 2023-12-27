@@ -1,54 +1,54 @@
-{% extends 'base.html' %} {% block content %}{% load static %}
+{% extends 'base.html' %}
 
-<div class="hero"><p>Discover page</p></div>
-<div class="grid place-content-center">
-  <p class="text-xl mb-6">Suggestion based on what you love</p>
-</div>
+{% block content %}
+  {% load static %}
 
-<div class="container">
-  <div class="flex justify-center items-center px-4 sm:px-6 lg:px-8">
-    <div class="relative">
-      <form method="post">
-        {% csrf_token %}
-        <input
-          type="search"
-          id="search"
-          class="h-12 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"
-          placeholder="Search.."
-          name="q"
-        />
-        <button id="search-this" type="submit" class="absolute top-3 right-1">
-          <img src="{% static 'pages/images/fa_search.png'%}" alt="" />
-        </button>
-      </form>
+  <div class="hero">
+    <p>Discover page</p>
+  </div>
+
+  <div class="grid place-content-center">
+    <p class="text-xl mb-6">Suggestions based on what you love</p>
+  </div>
+
+  <div class="container">
+    <div class="flex justify-center items-center px-4 sm:px-6 lg:px-8">
+      <div class="relative">
+        <form method="post">
+          {% csrf_token %}
+          <input
+            type="search"
+            id="search"
+            class="h-12 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"
+            placeholder="Search.."
+            name="q"
+          />
+          <button id="search-this" type="submit" class="absolute top-3 right-1">
+            <img src="{% static 'pages/images/fa_search.png' %}" alt="" />
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
-<div
-  class="flex flex-col container max-w-lg m-10 w-full items-center justify-center "
->
-  {% if res_list %}
-  <div class="text-lg mb-4">
-    Here are some recommended songs
+
+  <div class="flex flex-col container max-w-lg m-10 w-full items-center justify-center">
+    {% if res_list %}
+      {% for x in res_list %}
+        <div class="w-8/12 mx-auto mb-8">
+          <div id="track" class="w-full">
+            <iframe
+              class="w-full"
+              src="https://open.spotify.com/embed/track/{{ x.id }}?utm_source=generator"
+              height="100"
+              frameborder="1"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
   </div>
-  {% for x in res_list %}
-  <div class="object-center w-8/12 ">
-    <div id="track" class="w-full">
-        <iframe
-            class="w-full"
-            src="https://open.spotify.com/embed/track/{{x.id}}?utm_source=generator"
-            width="100%"
-            height="100px"
-            frameborder="1"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        ></iframe>
-    </div>
-</div>
-
-
-  {% endfor %} {%endif%}
-</div>
-
 
 {% endblock content %}
+
